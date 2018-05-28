@@ -4,7 +4,6 @@ import urllib
 import subprocess
 import os
 import time
-from joblib import Parallel, delayed
 
 logging.basicConfig(level='INFO')
 logger = logging.getLogger(__file__)
@@ -17,7 +16,7 @@ if not 'SentiStrengthCom.jar' in os.listdir('.'):
 
 class sentistrength():
 
-    def __init__(self,language, address='0.0.0.0', port=3000):
+    def __init__(self,language, address='0.0.0.0', port=30000):
         self.language = language
         self.sentistrength = ""
         self.port = port 
