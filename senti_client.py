@@ -4,7 +4,6 @@ import urllib
 import subprocess
 import os
 import time
-from joblib import Parallel, delayed
 
 logging.basicConfig(level='INFO')
 logger = logging.getLogger(__file__)
