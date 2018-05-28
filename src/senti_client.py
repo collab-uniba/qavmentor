@@ -10,9 +10,7 @@ logger = logging.getLogger(__file__)
 
 if not 'SentiStrengthCom.jar' in os.listdir('.'):
 	logger.warning("You need 'SentiStrengthCom.jar' to use this wrapper!")
-	logger.warning("because this version is not freely available, it was not packaged with this wrapper :-( ")
-	logger.warning("get it from http://sentistrength.wlv.ac.uk/ by emailing Professor Thelwall")
-	
+
 
 class sentistrength():
 
