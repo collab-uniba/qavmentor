@@ -53,7 +53,7 @@ def feature_analysis(request):
 	formatted_data['TitleLength'] = getTextLength(request['title'], {"short":[0,6],"medium":[6,10],"long":[10,9999999]})
 
 	#SentimentScore
-	formatted_data['SentimentScore'] = getSentimentScores(sentistrength('EN').get_sentiment(body_features['body']))
+	formatted_data['SentimentPositiveScore'],formatted_data['SentimentNegativeScore'] = getSentimentScores(sentistrength('EN').get_sentiment(body_features['body']))
 
 	#Ntag
 	formatted_data['Ntag'] = False
@@ -144,11 +144,15 @@ def assignCluster(n,clusters):
 
 
 def getSentimentScores(scores):
-	polarity = float(scores['positive'])+float(scores['negative'])
-	if polarity > 0:
-		return {'positive': True, 'negative':False, 'neutral':False}
-	elif polarity < 0:
-		return {'positive': False, 'negative':True, 'neutral':False}
-	else:
-		return {'positive': False, 'negative':False, 'neutral':True}
+	positive= False
+	negative= False
+
+	positive_score= float(scores['positive'])
+	negative_score= float(scores['negative'])
+	if positive_score > 1:
+		positive = true
+	if negative_score < -1:
+		negative = true	
+		
+	return positive,negative
 
