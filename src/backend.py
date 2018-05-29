@@ -2,7 +2,7 @@ from flask import Flask, request
 import json
 from senti_client import sentistrength
 from flask_cors import CORS
-import feature_analysis 
+from feature_analysis import FeatureAnalysis 
 import requests
 
 
@@ -13,7 +13,9 @@ CORS(app)
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
-	return json.dumps(feature_analysis.feature_analysis(request.get_json()))
+	features = FeatureAnalysis(request.get_json())
+	features.analyzeFeature()
+	return json.dumps(features.getResponse())
 
 
 

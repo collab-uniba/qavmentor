@@ -1,5 +1,10 @@
 /bin
 /include
+/Include
 /lib
+/Lib
+/Scripts
 /.pytest_cache
+/tcl
+/tests/.pytest_cache
 pip-selfcheck.json
