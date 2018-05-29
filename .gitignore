@@ -5,5 +5,5 @@
 /Lib
 /Scripts
 /.pytest_cache
-/tlc
+/tcl
 pip-selfcheck.json
