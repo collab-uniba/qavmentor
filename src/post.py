@@ -26,7 +26,7 @@ class Post:
 
 		[s.extract() for s in soup('code')] 
 		[s.extract() for s in soup('a')]
-		body_features['body'] = soup.get_text()
+		body_features['body'] = soup.get_text().replace("\n","").replace("\t","")
 		return body_features
 
 

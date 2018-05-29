@@ -5,7 +5,8 @@ from post import Post
 
 class FeatureAnalysis:
 
-	def __init__(self,request={}):
+	def __init__(self,request={},debug=False):
+		self.__debug=debug
 		if request=={}:
 			raise Exception("Empty body")
 		else:
@@ -55,8 +56,9 @@ class FeatureAnalysis:
 		self.__TitleLength = self.__assignCluster(self.__getTextLength(self.__post.title), 
 													 		{"short":[0,6],"medium":[6,10],"long":[10,9999999]})
 		#SentimentScore
-		senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
-		self.__PositiveSentimentScore,self.__NegativeSentimentScore= self.__getSentimentScores(senti_scores)
+		if not self.__debug:		
+			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
+			self.__PositiveSentimentScore,self.__NegativeSentimentScore= self.__getSentimentScores(senti_scores)
 		#Ntag
 		if len(self.__post.tags) > 1:
 			self.__Ntag = True
@@ -122,8 +124,6 @@ class FeatureAnalysis:
 		if upper_char !=0:
 			ratio=upper_char/len(text)		
 		return ratio
-
-
 
 
 			
