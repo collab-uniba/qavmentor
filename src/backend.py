@@ -14,7 +14,6 @@ CORS(app)
 @app.route('/analyze', methods=['POST'])
 def analyze():
 	features = FeatureAnalysis(request.get_json())
-	features.analyzeFeature()
 	return json.dumps(features.getResponse())
 
 

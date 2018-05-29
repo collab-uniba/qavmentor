@@ -13,7 +13,6 @@ if not 'SentiStrengthCom.jar' in os.listdir('.'):
 
 
 class sentistrength():
-
     def __init__(self,language, address='127.0.0.1', port=30000):
         self.language = language
         self.sentistrength = ""
@@ -53,5 +52,4 @@ class sentistrength():
         resp_string = response.decode()
         positive, negative= resp_string.split()
         return {'positive':positive,'negative':negative}
-
 
