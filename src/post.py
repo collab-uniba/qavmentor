@@ -32,29 +32,3 @@ class Post:
 
 
 
-req = {
-	"day": 0,
-	"hour": 32154178,
-	"body": '''<div class="post-text" itemprop="text">
-			
-			<p>I'm trying to learn python and I now I am trying to get the hang of classes and how to manipulate them with instances.</p>
-			
-			<p>I can't seem to understand this practice problem:</p>
-			
-			<p>Create and return a student object whose name, age, and major are
-			the same as those given as input</p>
-			
-			<pre class="lang-py prettyprint prettyprinted" style=""><code><span class="kwd">def</span><span class="pln"> make_student</span><span class="pun">(</span><span class="pln">name</span><span class="pun">,</span><span class="pln"> age</span><span class="pun">,</span><span class="pln"> major</span><span class="pun">)</span></code></pre>
-			
-			<p>I just don't get what it means by object, do they mean I should create an array inside the function that holds these values? or create a class and let this function be inside it, and assign instances? (before this question i was asked to set up a student class with name, age, and major inside)</p>
-			
-			<pre class="lang-py prettyprint prettyprinted" style=""><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Student</span><span class="pun">:</span><span class="pln">
-			    name </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Unknown name"</span><span class="pln">
-			    age </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
-			    major </span><span class="pun">=</span><span class="pln"> </span><span class="str">"Unknown major"</span></code></pre>
-			    </div>''',
-	"title": "Python, creating objects",
-	"tags": ["dick", "sucker"]
-}
-post = Post(req)
-
