@@ -27,7 +27,7 @@ def test_features_1():
 
 
 	features = FeatureAnalysis(req,debug=True)
-	response=features.getResponse()
+	response=features.extractFeatures()
 	assert(response['CodeSnippet']=="False")
 	assert(response['Weekday']=='Weekday')
 	assert(response['GMTHour']=="Afternoon")
@@ -94,7 +94,7 @@ def test_features_2():
 
 
 	features = FeatureAnalysis(req,debug=True)
-	response=features.getResponse()
+	response=features.extractFeatures()
 	assert(response['CodeSnippet']=="True")
 	assert(response['Weekday']=='Weekend')
 	assert(response['GMTHour']=="Evening")
