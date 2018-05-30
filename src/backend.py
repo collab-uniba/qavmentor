@@ -4,7 +4,7 @@ from senti_client import sentistrength
 from flask_cors import CORS
 from feature_analysis import FeatureAnalysis 
 import requests
-
+from r_model_predictor import RModelPredictor 
 
 app = Flask(__name__)
 CORS(app)
@@ -13,8 +13,11 @@ CORS(app)
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
-	features = FeatureAnalysis(request.get_json())
-	return json.dumps(features.getResponse())
+	feature_extractor = FeatureAnalysis(request.get_json())
+	features = feature_extractor.extractFeatures()
+	predictor = RModelPredictor(features)
+	prediction = (predictor.predict())
+	return json.dumps({"prediction": prediction})
 
 
 

@@ -1,19 +1,18 @@
-import logging
 import socket
 import urllib
 import subprocess
 import os
 import time
+import sys
+import io
 
-logging.basicConfig(level='INFO')
-logger = logging.getLogger(__file__)
+
 
 if not 'SentiStrengthCom.jar' in os.listdir('.'):
-	logger.warning("You need 'SentiStrengthCom.jar' to use this wrapper!")
-
+    pass
 
 class sentistrength():
-    def __init__(self,language, address='127.0.0.1', port=30000):
+    def __init__(self,language, address='0.0.0.0', port=30000):
         self.language = language
         self.sentistrength = ""
         self.port = port 
@@ -25,7 +24,6 @@ class sentistrength():
 
     def run_server(self, language):
         if language!=self.language and self.sentistrength:
-            logger.warning("wrong language running, trying to switch")
             os.killpg(self.sentistrength.pid,15)
             time.sleep(1)
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -33,8 +31,8 @@ class sentistrength():
             sock.connect((self.address,self.port))
         except ConnectionRefusedError:
             try:
-                logger.info("server not found, trying to launch server")
-                self.sentistrength = subprocess.Popen(["java -jar SentiStrengthCom.jar sentidata {} listen {} ".format(os.path.dirname(os.path.realpath(__file__))+"/"+self.language+"/", self.port) ], shell=True, preexec_fn=os.setsid)
+                self.sentistrength = subprocess.Popen(["java -jar SentiStrengthCom.jar sentidata {} listen {} >/dev/null 2>&1"
+                    .format(os.path.dirname(os.path.realpath(__file__))+"/"+self.language+"/", self.port) ], shell=True, preexec_fn=os.setsid)
                 time.sleep(1)
                 sock.connect((self.address,self.port))
                 self.language = language

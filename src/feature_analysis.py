@@ -12,31 +12,31 @@ class FeatureAnalysis:
 		else:
 			self.__post = Post(request)
 			self.__CodeSnippet = False
-			self.__Weekday=None
-			self.__GMTHour=None
-			self.__BodyLength=None
-			self.__TitleLength=None
-			self.__PositiveSentimentScore=None
-			self.__NegativeSentimentScore=None
-			self.__Ntag=False
-			self.__AvgUpperCharsPPost=None
-			self.__URL=False
+			self.__Weekday = None
+			self.__GMTHour = None
+			self.__BodyLength = 0
+			self.__TitleLength= 0
+			self.__SentimentPositiveScore= False
+			self.__SentimentNegativeScore= False 
+			self.__Ntag = False
+			self.__AvgUpperCharsPPost = 1
+			self.__URL = False
 	
 
 
-	def getResponse(self):
+	def extractFeatures(self):
 		self.__analyzeFeatures()
 		return	{
-					"CodeSnippet":self.__CodeSnippet,
+					"CodeSnippet":str(self.__CodeSnippet),
 					"Weekday": self.__Weekday,
 					"GMTHour": self.__GMTHour,
 					"BodyLength":self.__BodyLength,
 					"TitleLength": self.__TitleLength,
-					"PositiveSentimentScore": self.__PositiveSentimentScore,
-					"NegativeSentimentScore": self.__NegativeSentimentScore,
-					"Ntag": self.__Ntag,
+					"SentimentPositiveScore": str(self.__SentimentPositiveScore),
+					"SentimentNegativeScore": str(self.__SentimentNegativeScore),
+					"NTag": str(self.__Ntag),
 					"AvgUpperCharsPPost":self.__AvgUpperCharsPPost,
-					"URL": self.__URL
+					"URL": str(self.__URL)
 				}
 
 
@@ -51,21 +51,21 @@ class FeatureAnalysis:
 		self.__GMTHour = self.__getDayTime()
 		#BodyLength
 		self.__BodyLength = self.__assignCluster(self.__getTextLength(self.__post.body), 
-															{"short":[0,90],"medium":[90,200],"long":[200,9999999]})
+															{"Short":[0,90],"Medium":[90,200],"Long":[200,9999999]})
 
 		self.__TitleLength = self.__assignCluster(self.__getTextLength(self.__post.title), 
-													 		{"short":[0,6],"medium":[6,10],"long":[10,9999999]})
+													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,9999999]})
 		#SentimentScore
 		if not self.__debug:		
 			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
-			self.__PositiveSentimentScore,self.__NegativeSentimentScore= self.__getSentimentScores(senti_scores)
+			self.__SentimentPositiveScore,self.__SentimentNegativeScore= self.__getSentimentScores(senti_scores)
 		#Ntag
 		if len(self.__post.tags) > 1:
 			self.__Ntag = True
 		#AvgUpperCharsPPost
-		self.__AvgUpperCharsPPost = self.__assignCluster(((self.__getUppercaseRatio(self.__post.body) +
+		self.__AvgUpperCharsPPost = str(((self.__getUppercaseRatio(self.__post.body) +
 															self.__getUppercaseRatio(self.__post.title))/2),
-															{"low":[0,0.10],"high":[0.10,1]})
+															)
 		#URL
 		if len(self.__post.url) > 0:
 			self.__URL= True
@@ -111,9 +111,9 @@ class FeatureAnalysis:
 		positive_score= float(scores['positive'])
 		negative_score= float(scores['negative'])
 		if positive_score > 1:
-			positive = true
+			positive = True
 		if negative_score < -1:
-			negative = true	
+			negative = True	
 			
 		return positive,negative
 
