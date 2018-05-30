@@ -28,16 +28,16 @@ def test_features_1():
 
 	features = FeatureAnalysis(req,debug=True)
 	response=features.getResponse()
-	assert(response['CodeSnippet']==False)
+	assert(response['CodeSnippet']=="False")
 	assert(response['Weekday']=='Weekday')
 	assert(response['GMTHour']=="Afternoon")
-	assert(response['BodyLength']=="long")
-	assert(response['TitleLength']=="long")
+	assert(response['BodyLength']=="Long")
+	assert(response['TitleLength']=="Long")
 	#assert(response['PositiveSentimentScore']==False)
 	#assert(response['NegativeSentimentScore']==False)
-	assert(response['Ntag']==True)
-	assert(response['AvgUpperCharsPPost']=="low")
-	assert(response['URL']==False)
+	assert(response['Ntag']=="True")
+	assert(response['AvgUpperCharsPPost']=="Low")
+	assert(response['URL']=="False")
 
 
 def test_features_2():
@@ -95,16 +95,16 @@ def test_features_2():
 
 	features = FeatureAnalysis(req,debug=True)
 	response=features.getResponse()
-	assert(response['CodeSnippet']==True)
+	assert(response['CodeSnippet']=="True")
 	assert(response['Weekday']=='Weekend')
 	assert(response['GMTHour']=="Evening")
-	assert(response['BodyLength']=="long")
-	assert(response['TitleLength']=="long")
+	assert(response['BodyLength']=="Long")
+	assert(response['TitleLength']=="Long")
 	#assert(response['PositiveSentimentScore']==False)
 	#assert(response['NegativeSentimentScore']==False)
-	assert(response['Ntag']==True)
-	assert(response['AvgUpperCharsPPost']=="low")
-	assert(response['URL']==True)
+	assert(response['Ntag']=="True")
+	assert(response['AvgUpperCharsPPost']=="Low")
+	assert(response['URL']=="True")
 
 
 
