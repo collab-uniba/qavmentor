@@ -1,4 +1,7 @@
-from bs4 import BeautifulSoup
+import sys
+import os.path
+src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/utils/"
+sys.path.append(src_code_path)
 from senti_client import sentistrength
 import json
 from post import Post

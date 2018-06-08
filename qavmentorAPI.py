@@ -1,13 +1,10 @@
 from flask import Flask, request
 import json
-from senti_client import sentistrength
-from flask_cors import CORS
-from feature_analysis import FeatureAnalysis 
+from utils.feature_analysis import FeatureAnalysis 
 import requests
-from r_model_predictor import RModelPredictor 
+from utils.r_model_predictor import RModelPredictor 
 
 app = Flask(__name__)
-CORS(app)
 
 
 
@@ -29,6 +26,3 @@ def debug():
     return json.dumps(client_object)
 
 
-
-if __name__ == '__main__':
-	app.run()

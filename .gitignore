@@ -6,6 +6,7 @@
 /Scripts
 /.pytest_cache
 /tcl
+/venv
 <<<<<<< HEAD
 /tests/.pytest_cache
 pip-selfcheck.json
