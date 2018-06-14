@@ -12,7 +12,7 @@ if not 'SentiStrengthCom.jar' in os.listdir('.'):
     pass
 
 class sentistrength():
-    def __init__(self,language, address='0.0.0.0', port=30000):
+    def __init__(self,language, address='127.0.0.1', port=30000):
         self.language = language
         self.sentistrength = ""
         self.port = port 

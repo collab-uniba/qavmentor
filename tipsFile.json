@@ -1,0 +1,30 @@
+[{
+"index":1,
+"category":"body",
+"problem":{"CodeSnippet":"False"},
+"msg":"Aiutati che dio ti aiuti ;) cerca di aiutare gl'altri inserendo del codice che spieghi meglio il tuo problema."
+},
+{"index":2,
+"category":"body",
+"problem":{"SentimentPositiveScore":"True"},
+"msg":"Per una domanda migliore, dovresti cercare di essere il più neutrale possibile nella scrittura della tua domanda."
+},
+{
+"index":3,
+"category":"body",
+"problem":{"SentimentNegativeScore":"True"},
+"msg":"Non essere triste, cerca di essere il più neutrale possibile nella scrittura della tua domanda."
+},
+{
+"index":4,
+"category":"tag",
+"problem":{"NTag":"False"},
+"msg":"Inserire più tag per la tua domanda, aiuta a posizionarla meglio e aumenta le possibilità di avere una buna risposta"
+},
+{
+"index":5,
+"category":"body",
+"problem":{"AvgUpperCharsPPost":"Long"},
+"msg":"Cerca di usare le maiuscole nel posto giusto ;)"
+}
+]
