@@ -1,7 +1,6 @@
 import json
 
 
-
 class TipsHandler:
 	def __init__(self,tipsFileName="tipsFile.json"):
 		

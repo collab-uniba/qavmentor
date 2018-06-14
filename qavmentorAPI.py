@@ -8,7 +8,10 @@ from flask_cors import CORS
 
 tipsHandler=TipsHandler()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 04ab0d5fa8255413d2f03a59f3f5fd5aa9449d35
 app = Flask(__name__)
 CORS(app)
 
