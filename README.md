@@ -1,5 +1,7 @@
 # qavmentor
-Latest build : [![Build Status](https://travis-ci.org/collab-uniba/qavmentor.svg?branch=master)](https://travis-ci.org/collab-uniba/qavmentor)
+Latest build -> [![Build Status](https://travis-ci.org/collab-uniba/qavmentor.svg?branch=master)](https://travis-ci.org/collab-uniba/qavmentor)
+
+Code coverage -> [![codecov](https://codecov.io/gh/collab-uniba/qavmentor/branch/master/graph/badge.svg)](https://codecov.io/gh/collab-uniba/qavmentor)
 
 Virtual mentor service for social Q&amp;A sites, e.g. Stack Overflow
 
