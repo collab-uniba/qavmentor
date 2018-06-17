@@ -24,9 +24,10 @@ def analyze():
 
 @app.route('/getTip', methods=['POST'])
 def getTip():
-	feature_extractor = FeatureAnalysis(request.get_json())
+	json_request=request.get_json()
+	feature_extractor = FeatureAnalysis(json_request)
 	features = feature_extractor.extractFeatures()
-	tips=tipsHandler.choseTips(features)
+	tips=tipsHandler.choseTips(features,json_request["modified"])
 	return json.dumps(tips)
 
 

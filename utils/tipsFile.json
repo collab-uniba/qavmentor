@@ -1,30 +1,134 @@
-[{
-"index":1,
-"category":"body",
-"problem":{"CodeSnippet":"False"},
-"msg":"Aiutati che dio ti aiuti ;) cerca di aiutare gl'altri inserendo del codice che spieghi meglio il tuo problema."
-},
-{"index":2,
-"category":"body",
-"problem":{"SentimentPositiveScore":"True"},
-"msg":"Per una domanda migliore, dovresti cercare di essere il più neutrale possibile nella scrittura della tua domanda."
-},
-{
-"index":3,
-"category":"body",
-"problem":{"SentimentNegativeScore":"True"},
-"msg":"Non essere triste, cerca di essere il più neutrale possibile nella scrittura della tua domanda."
-},
-{
-"index":4,
-"category":"tag",
-"problem":{"NTag":"False"},
-"msg":"Inserire più tag per la tua domanda, aiuta a posizionarla meglio e aumenta le possibilità di avere una buona risposta"
-},
-{
-"index":5,
-"category":"body",
-"problem":{"AvgUpperCharsPPost":"Long"},
-"msg":"Cerca di usare le maiuscole nel posto giusto ;)"
-}
+[
+	{
+		"index":1,
+		"category":"body",
+		"problem":{"CodeSnippet":"False"},
+		"msg":"CodeSnippet False"
+	},
+	{
+		"index":2,
+		"category":"body",
+		"problem":{"CodeSnippet":"True"},
+		"msg":"CodeSnippet True"
+	},
+	{
+		"index":3,
+		"category":"extra",
+		"problem":{"Weekday":"Weekend"},
+		"msg":"Weekday Weekend"
+	},
+	{
+		"index":4,
+		"category":"extra",
+		"problem":{"Weekday":"Weekday"},
+		"msg":"Weekday Weekday"
+	},	
+	{
+		"index":5,
+		"category":"extra",
+		"problem":{"GMTHour":"Afternoon"},
+		"msg":"GMTHour Afternoon"
+	},
+	{
+		"index":6,
+		"category":"extra",
+		"problem":{"GMTHour":"Evening"},
+		"msg":"GMTHour Evening"
+	},
+	{
+		"index":7,
+		"category":"extra",
+		"problem":{"GMTHour":"Nigth"},
+		"msg":"GMTHour Nigth"
+	},
+	{
+		"index":8,
+		"category":"extra",
+		"problem":{"GMTHour":"Morning"},
+		"msg":"GMTHour Morning"
+	},
+	{
+		"index":9,
+		"category":"body",
+		"problem":{"BodyLength":"Short"},
+		"msg":"BodyLength Short"
+	},
+	{
+		"index":10,
+		"category":"body",
+		"problem":{"BodyLength":"Medium"},
+		"msg":"BodyLength Medium"
+	},
+	{
+		"index":11,
+		"category":"body",
+		"problem":{"BodyLength":"Long"},
+		"msg":"BodyLength Long"
+	},
+	{
+		"index":12,
+		"category":"title",
+		"problem":{"TitleLength":"Short"},
+		"msg":"TitleLength Short"
+	},
+	{
+		"index":13,
+		"category":"title",
+		"problem":{"TitleLength":"Medium"},
+		"msg":"TitleLength Medium"
+	},
+	{
+		"index":14,
+		"category":"title",
+		"problem":{"TitleLength":"Long"},
+		"msg":"TitleLength Long"
+	},
+	{
+		"index":15,
+		"category":"body",
+		"problem":{"SentimentPositiveScore":"True"},
+		"msg":"SentimentPositiveScore True"
+	},
+	{
+		"index":16,
+		"category":"body",
+		"problem":{"SentimentPositiveScore":"False"},
+		"msg":"SentimentPositiveScore False"
+	},
+	{
+		"index":17,
+		"category":"body",
+		"problem":{"SentimentNegativeScore":"True"},
+		"msg":"SentimentNegativeScore True"
+	},
+	{
+		"index":18,
+		"category":"body",
+		"problem":{"SentimentNegativeScore":"True"},
+		"msg":"SentimentNegativeScore True"
+	},
+	{
+		"index":19,
+		"category":"tag",
+		"problem":{"NTag":"True"},
+		"msg":"NTag True"
+	},
+	{
+		"index":20,
+		"category":"tag",
+		"problem":{"NTag":"False"},
+		"msg":"NTag False"
+	},
+	{
+		"index":21,
+		"category":"body",
+		"problem":{"URL":"True"},
+		"msg":"URL True"
+	},
+	{
+		"index":22,
+		"category":"body",
+		"problem":{"URL":"False"},
+		"msg":"URL False"
+	}									
 ]
