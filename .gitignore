@@ -7,9 +7,6 @@
 /.pytest_cache
 /tcl
 /venv
-<<<<<<< HEAD
+pip-selfcheck.json
 /tests/.pytest_cache
-pip-selfcheck.json
-=======
-pip-selfcheck.json
->>>>>>> b5ac570a918a8aff0a8eb8a21d1207e81bcbe503
+
