@@ -4,12 +4,17 @@ from utils.feature_analysis import FeatureAnalysis
 from utils.tips_handler import TipsHandler
 import requests
 from utils.r_model_predictor import RModelPredictor 
-from flask_cors import CORS
+#from flask_cors import CORS
 
 tipsHandler=TipsHandler()
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
+
+
+@app.route('/')
+def root():
+	return('It Works!')
 
 
 @app.route('/analyze', methods=['POST'])
