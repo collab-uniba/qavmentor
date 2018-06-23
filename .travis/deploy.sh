@@ -12,4 +12,3 @@ git push deploy master
 #ssh apps@$IP -p $PORT <<EOF
 #  cd $DEPLOY_DIR
  # crystal build --release --no-debug index.cr # Change to whatever commands you need!
-EOF
