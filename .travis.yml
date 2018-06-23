@@ -1,12 +1,19 @@
 language: python
 python:
-  - "3.5"
-# command to install dependencies
+- '3.5'
 install:
-  - pip install -r requirements.txt
-# command to run tests
+- pip install -r requirements.txt
 script:
-    - pytest --cov=./
-
+- pytest --cov=./
+before_install:
+- openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
+  -in id_rsa.enc -out id_rsa -d
 after_success:
-  - codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
+- codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
+- ./.travis/deploy.sh
+
+env:
+  global:
+  - secure: qtLas4fgkH7d+gMw1pKipG51lizDm2LKHrzBrnuwcKNj4MEi+HWencftg4WGvy7s3ohgM2spC4ZJx0T+AQgdBAmKEQAdp0QzHfvRzds+E1+ApmvY6quVXW5bCOEsBCyic5/EmiSm5mZATdOtFb26bINSBXmnkOMI6IZZLaBsUejNr3xfU7+QSEJUmkwAQ3GI9sr8bj761WDv8arDkrhVxNR9SiH/dWjZP+vyCsOhRhpn8n++CMfbQwujizBlqVooCcjI3FNN+Bm08uSTSTwYkyULTEXCkvLVx/xe7+7/FecnE6hqroowmWtOHNBRM3zs3N6d1frZw19Qn5E9nSxvlyvn8mV2zYinnEkDmZMMVttaJrrb5mSPbhBNjTwcG2g9xqvXWMB3a9/rDOH+v76YS86iJa8yzu91WzUUGhU8leYQDsno7/PLhhEdgGiX1L083+RhacglXMH+dxsoubFEWcPo4OEzypTupVzgVuHyN17ngKtmaJbZmgsi7+rKTooNRb8B0TmdIcJ41+yL0NgxZ7qm/WLvFBrPYNzSRzMyGR/gPCym996uVG5VsT+WO0CISj0XvdA6q5BmAZx6pw+CVkR+XBO3j6pjxphR/FWIFSKlgOe+YvVqJIVja5JjASPMWfG8VEEUviVHhnDaz8Vgpa/KoVhEqd4KftVplS0lPak=
+  - secure: cjDF/zv1NIniQT8dIQvhfzsOoy9eDtB4vWNZWfcO7oeSZaQLgZRtQaHyfq2JOKq7DoGPeCxP5FMnebQ/k7gMeh8I3B8Ug8hosSYBWrjWyGHQ58QR5H+UGSFHbWfUB8pGiw6UlRj2GFOXHfwWmkaPRcP5I/wvJaoAlU3kJaDQcmjzxdSabWtDQpI34v1ffumO9+7LjI+CK2vVODYwiD9BnMJyFj4e+wfC93pKJhkuZ4OpQikY+DMysKeC3NUhQGta5FQBdkldWmktb3cwTU0egoDIjxO/b9VsBfxxfmjM2GF7gd4tQgS4G8OuzWOc/TdxCk0pa2YDzWuEtPCFt+T+avSuG0qRpsS9JDT9jZJf+/PzpvVqqgNzhbpJKd32zY1NcIt83vW3OSAMDXzD2rOCKR3ZIaQ6cnwgL516Q34WE56xDg5QRSDNKCTQHU5IaEZXU4EWCKLONaShKJhjH+8S2Bv/ZL4mN+cFD0kKUW5GZ0+Gh+fNQedAsxdVnJIHKDxQDBh0KUBqhygQR7TkAgvxsDSiYowvJ/B57HODZHJ8dvGzNznhPLsE+qAQr2rQ/wiX1C5GM81HsjYJK2yHtUjJW+QcPM4rpP1ock+S2mo2kRJ4bMS+YSyPLLtCxOvZmrr7cNwJ7bjvsltjmiE7BcPnDOMStHOAg1QzcReq6eYWqCQ=
+  - secure: pKa0FkijYRa7BDAy8zjjSmd9oiPY+j1V0McALTSXUsPDLLMjRODxUVLdKAIuZiCcejcm6ly1myF88BfQbbYl62l1KoMfH4Zgbhx/7YParHh+jdFmFgYCN6MiqV8DRhGtIfRXKJtSgIgj5WaoGLK3b7zI8/zgjIaqQJrECWiWxeHuuue8WJc+NOHRu6TDb98Wx62+Xt4O2bLoAw1e+YM4iCpatu0kClOJfpb4583x2VWHEVxz5gR8hlokj12xGdFMBP3NH7I3e+jN5jTypFtfQNZCk4fZ/iIGbvmSVMtgf/gu1tsUyBYIhDkdIBE/sfQd9TlWQdfyyE8mnKRA4czf3tXQYbeYL5O4uPrG9ZBJRH8Su4sbrfnDrg+rxegHNf5xgkt3n2f9A49Q7AVk/tqIpGLFuXf6vkCL7ogK5YUf9ExwJPoLJlkt4ENuYTtG8TA5ZjYF7Zisk3aGg19wr0pLRS30WLvYY24yJLwj3CS4fzal+TgbBeiHW1rnEf1yUxGD6vWIl7whZo6Kvz/pJq+j33kUQoMTPie0TiqHpW+KsgwthQZZewTZE0kCbKFG2GzTxY6BmvRqY7PS2YpitCOMqB624XhbWqAfIIBYa0bo56ZM+TVP2zI0RUi3X4K1992uiqXFbZT97ngBXaQz5Kz+KUlVOuNN5Wp0Zfva4tHluVE=
