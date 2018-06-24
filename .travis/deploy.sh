@@ -11,6 +11,7 @@ echo ____________________deploying____________________
 if [ -z `ssh-keygen -F $IP` ]; then
   ssh-keyscan -H $IP >> ~/.ssh/known_hosts
 fi
+git fetch --unshallow || true
 git push deploy master
 
 # Skip this command if you don't need to execute any additional commands after deploying.
