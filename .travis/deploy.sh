@@ -10,6 +10,7 @@ git remote add deploy ssh://root@$IP:$PORT$DEPLOY_DIR
 echo ____________________deploying____________________
 if [ -z `ssh-keygen -F $IP` ]; then
   ssh-keyscan -H $IP >> ~/.ssh/known_hosts
+  echo ____________________public key not recognized, adding to known host____________________
 fi
 git fetch --unshallow || true
 git push deploy master
