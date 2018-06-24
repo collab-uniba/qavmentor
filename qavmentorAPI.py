@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-	return('It Works fine!!!!')
+	return('It Works very fine!!!!')
 
 
 @app.route('/analyze', methods=['POST'])
