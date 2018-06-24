@@ -9,4 +9,5 @@
 /venv
 pip-selfcheck.json
 /tests/.pytest_cache
+/utils/__pycache__
 
