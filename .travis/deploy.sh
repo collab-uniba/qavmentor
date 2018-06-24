@@ -16,7 +16,7 @@ git fetch --unshallow || true
 git push deploy master
 
 # Skip this command if you don't need to execute any additional commands after deploying.
-ssh root@$IP -p $PORT
+ssh root@$IP -p $PORT <<EOF
 service apache2 restart
 #  cd $DEPLOY_DIR
  # crystal build --release --no-debug index.cr # Change to whatever commands you need!
