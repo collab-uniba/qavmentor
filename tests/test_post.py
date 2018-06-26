@@ -1,7 +1,7 @@
 import pytest
 import sys
 import os.path
-src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/utils/"
+src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/src/utils/"
 sys.path.append(src_code_path)
 from post import Post 
 
