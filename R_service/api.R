@@ -1,6 +1,6 @@
 library("rjson")
 
-modello <<- readRDS(file="modelloR.RDS")
+modello <<- readRDS(file="/var/www/qavmentor/R_service/modelloR.RDS")
 
 
 #* @post /model_predict
