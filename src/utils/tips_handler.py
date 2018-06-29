@@ -13,6 +13,7 @@ class TipsHandler:
 	def __init__(self,tipsFileName="tipsFile.json"):
 		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+tipsFileName,"r")
 		self.__tips=json.loads(in_file.read())
+		print(self.__tips)
 		in_file.close()
 	
 
