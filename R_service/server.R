@@ -1,5 +1,5 @@
 library(plumber)
 #api <- plumb("/var/www/qavmentor/R_service/api.R")
-api <- plumb(paste(normalizePath(dirname(".")),"/api.r"))
-#print(paste(normalizePath(dirname(".")),"/api.r"))
+api <- plumb(paste(getwd(),"api.r",sep="/"))
+#print(getwd())
 api$run(port=1111)

@@ -1,6 +1,6 @@
 library("rjson")
 
-modello <<- readRDS(paste(normalizePath(dirname(".")),"/modelloR.RDS"))
+modello <<- readRDS(paste(normalizePath(dirname(".")),"modelloR.RDS",sep="/"))
 
 #* @post /model_predict
 model_predict <- function(req) {
