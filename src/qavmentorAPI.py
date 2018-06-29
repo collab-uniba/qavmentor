@@ -23,7 +23,6 @@ def analyze():
 	features = feature_extractor.extractFeatures()
 	predictor = RModelPredictor(features)
 	prediction = (predictor.predict())
-	time.sleep(t)
 	return json.dumps({"prediction": prediction})
 
 
