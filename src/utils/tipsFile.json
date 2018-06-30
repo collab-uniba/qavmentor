@@ -17,7 +17,7 @@
 		"index":2,
 		"category":"body",
 		"problem":{"BodyLength":"Long"},
-		"title":"Your question is too long :(.",
+		"title":"Your question is too long.",
 		"msg":"Too long questions should be avoided since people do not like to read too much, try to be concise as possible."
 	},
 	{
@@ -30,22 +30,29 @@
 	{
 		"index":4,
 		"category":"body",
-		"problem":{"SentimentPositiveScore":"False"},
-		"title":"Positive Sentiment False.",
-		"msg":"Sentiment of your question should be as neutral as possible"
-	},
-	{
-		"index":5,
-		"category":"body",
 		"problem":{"SentimentNegativeScore":"True"},
 		"title":"Negative Sentiment True",
 		"msg":"Sentiment of your question should be as neutral as possible"
 	},
 	{
+		"index":5,
+		"category":"extra",
+		"problem":{"GMTHour":"Evening"},
+		"title":"You're posting in the evening.",
+		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+	},
+	{
 		"index":6,
-		"category":"body",
-		"problem":{"SentimentNegativeScore":"False"},
-		"title":"Negative Sentiment False",
-		"msg":"Sentiment of your question should be as neutral as possible"
-	}									
+		"category":"extra",
+		"problem":{"GMTHour":"Nigth"},
+		"title":"You're posting in the nigth.",
+		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+	},
+	{
+		"index":7,
+		"category":"extra",
+		"problem":{"GMTHour":"Morning"},
+		"title":"You're posting in the Morning.",
+		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+	},								
 ]
