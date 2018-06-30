@@ -3,22 +3,22 @@
 		"index":0,
 		"category":"body",
 		"problem":{"CodeSnippet":"False"},
-		"title":"There is no CodeSnippet.",
-		"msg":"The importance of attaching code snippets to questions is clear to community members since 95% of survey respondents strongly agreed that it would enhance the chance of receiving successful answers. Besides, they suggested the importance of using live code editors, which would enable community users to fiddle directly with the code samples provided by askers"
+		"title":"There is no Code Sample.",
+		"msg":"In order to help people helping you, try to write some code example that explain better what is your problem if it is possible"
 	},
 	{
 		"index":1,
 		"category":"body",
 		"problem":{"BodyLength":"Medium"},
-		"title":"Medium bodyLength.",
-		"msg":"Question should be the short possibile"
+		"title":"Seems that your post is quite long...",
+		"msg":"Try to be concise, writing easy and readable question"
 	},
 	{
 		"index":2,
 		"category":"body",
 		"problem":{"BodyLength":"Long"},
-		"title":"BodyLength too long.",
-		"msg":"Too long questions should be avoided since people do not like to read too much."
+		"title":"Your question is too long :(.",
+		"msg":"Too long questions should be avoided since people do not like to read too much, try to be concise as possible."
 	},
 	{
 		"index":3,

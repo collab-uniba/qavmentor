@@ -43,7 +43,6 @@ def test_post_1():
 	assert(len(post.tags)==2)
 	assert(post.hour==17)
 	assert(post.day==5)
-	assert(len(post.code)==0)
 	assert(len(post.url)==0)
 
 
@@ -125,8 +124,70 @@ def test_post_2():
 	assert(len(post.tags)==4)
 	assert(post.hour==17)
 	assert(post.day==5)
-	assert(len(post.code)==3)
 	assert(len(post.url)==1)
 
+def test_post_3():
+	req = {	
+			"title":"nginx cant't serve files correctly when deploy a django project with nginx and uwsgi on ubuntu 16.04",
+			"body":'''
+					<p>When I deploy a django project follow this tutorial:[<a href="http://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html?highlight=django" rel="nofollow noreferrer">http://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html?highlight=django</a>
+					when I done the step <strong>Basic nginx test</strong>, after i type taopinpin.cn/media/media.png, the page response denied like this:
+					<a href="https://i.stack.imgur.com/s3pO5.png" rel="nofollow noreferrer">enter image description here</a></p>
 
-		    
+					<p>and my project like this:
+					<a href="https://i.stack.imgur.com/criiS.png" rel="nofollow noreferrer">enter image description here</a>
+					mysite_nginx.conf file is :</p>
+
+					<pre class="lang-py prettyprint prettyprinted" style=""><code><span class="pln">upstream django </span><span class="pun">{</span><span class="pln">
+					    server </span><span class="lit">127.0</span><span class="pun">.</span><span class="lit">0.1</span><span class="pun">:</span><span class="lit">8001</span><span class="pun">;</span><span class="pln">
+					</span><span class="pun">}</span><span class="pln">
+					server </span><span class="pun">{</span><span class="pln">
+					    listen      </span><span class="lit">8000</span><span class="pun">;</span><span class="pln">
+					    server_name  taopinpin</span><span class="pun">.</span><span class="pln">cn</span><span class="pun">;</span><span class="pln">
+
+					    charset     utf</span><span class="pun">-</span><span class="lit">8</span><span class="pun">;</span><span class="pln">
+
+					    client_max_body_size   </span><span class="lit">75M</span><span class="pun">;</span><span class="pln">
+
+
+					    location </span><span class="pun">/</span><span class="pln">media  </span><span class="pun">{</span><span class="pln">
+					        alias </span><span class="pun">/</span><span class="pln">root</span><span class="pun">/</span><span class="pln">mysite</span><span class="pun">/</span><span class="pln">media</span><span class="pun">;</span><span class="pln">
+					    </span><span class="pun">}</span><span class="pln">
+					    location </span><span class="pun">/</span><span class="pln">static </span><span class="pun">{</span><span class="pln">
+					        alias </span><span class="pun">/</span><span class="pln">root</span><span class="pun">/</span><span class="pln">mysite</span><span class="pun">/</span><span class="pln">static</span><span class="pun">;</span><span class="pln">
+					    </span><span class="pun">}</span><span class="pln">
+					    location </span><span class="pun">/</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+					        uwsgi_pass    django</span><span class="pun">;</span><span class="pln">
+					        inlcude       </span><span class="pun">/</span><span class="pln">root</span><span class="pun">/</span><span class="pln">mysite</span><span class="pun">/</span><span class="pln">mysite</span><span class="pun">/</span><span class="pln">uwsgi_params</span><span class="pun">;</span><span class="pln">
+					    </span><span class="pun">}</span><span class="pln">
+					</span><span class="pun">}</span></code></pre>
+
+					<p>I don't know where get an error, can you help me debug it ? Thank you a lot.</p>
+			
+			''',
+			
+			"hour":17,
+	    	"day":5,
+	    	"tags":["python","django","nginx","uwsgi"]
+	    }
+	correct_title="nginx cant't serve files correctly when deploy a django project with nginx and uwsgi on ubuntu 16.04"
+	body='''
+			When I deploy a django project follow this tutorial:[
+			 when I done the step Basic nginx test, after i type taopinpin.cn/media/media.png, 
+			 the page response denied like this:
+
+			and my project like this: mysite_nginx.conf file is :
+
+			
+			I don't know where get an error, can you help me debug it ? Thank you a lot.		
+		'''
+
+	correct_body=body.replace("\n","").replace("\t","") 
+	post=Post(req)
+
+	assert(post.body.replace(" ","")==correct_body.replace(" ",""))
+	assert(post.title==correct_title)
+	assert(len(post.tags)==4)
+	assert(post.hour==17)
+	assert(post.day==5)
+	assert(len(post.url)==3)
