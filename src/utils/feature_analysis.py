@@ -24,6 +24,7 @@ class FeatureAnalysis:
 			self.__Ntag = False
 			self.__AvgUpperCharsPPost = 1
 			self.__URL = False
+			self.__AvgUpperCharsPPostDisc=None
 	
 
 
@@ -39,7 +40,8 @@ class FeatureAnalysis:
 					"SentimentNegativeScore": str(self.__SentimentNegativeScore),
 					"NTag": str(self.__Ntag),
 					"AvgUpperCharsPPost":self.__AvgUpperCharsPPost,
-					"URL": str(self.__URL)
+					"URL": str(self.__URL),
+					"AvgUpperCharsPPostDisc":self.__AvgUpperCharsPPostDisc
 				}
 
 
@@ -69,6 +71,8 @@ class FeatureAnalysis:
 		self.__AvgUpperCharsPPost = str(((self.__getUppercaseRatio(self.__post.body) +
 															self.__getUppercaseRatio(self.__post.title))/2),
 															)
+		#AvgUpperCharsPPost cluster
+		self.__AvgUpperCharsPPostDisc= self.__assignCluster(float(self.__AvgUpperCharsPPost),{"Low":[0,0.10],"High":[0.10,1]})
 		#URL
 		if len(self.__post.url) > 0:
 			self.__URL= True
