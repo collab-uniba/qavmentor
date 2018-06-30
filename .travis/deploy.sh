@@ -19,5 +19,7 @@ git push deploy master
 ssh root@$IP -p $PORT <<EOF
 cd $DEPLOY_DIR
 pip3 install -r requirements.txt
+service run-Rserver restart
+service run-senti restart
 service apache2 restart
 
