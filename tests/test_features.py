@@ -21,7 +21,8 @@ def test_features_1():
 	    	''',
 	    	"tags":["python","virtualenv"],
 	    	"hour":17,
-	    	"day":5
+	    	"day":5,
+	    	"reputation": 1000
 
 	    }
 
@@ -38,6 +39,7 @@ def test_features_1():
 	assert(response['NTag']=="True")
 	#assert(response['AvgUpperCharsPPost']=="Low")
 	assert(response['URL']=="False")
+	assert(response['UserReputation']=="Established")
 
 
 def test_features_2():
@@ -88,7 +90,8 @@ def test_features_2():
             ''',
 	    	"tags":["docker","proxy","dns","apt"],
 	    	"hour":20,
-	    	"day":0
+	    	"day":0,
+	    	"reputation": 9
 
 	    }
 
@@ -105,6 +108,7 @@ def test_features_2():
 	assert(response['NTag']=="True")
 	#assert(response['AvgUpperCharsPPost']=="Low")
 	assert(response['URL']=="True")
+	assert(response['UserReputation']=="New")
 
 
 

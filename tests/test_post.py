@@ -22,7 +22,8 @@ def test_post_1():
 	    	''',
 	    	"tags":["python","virtualenv"],
 	    	"hour":17,
-	    	"day":5
+	    	"day":5,
+	    	"reputation":243
 
 	    }
 
@@ -95,7 +96,8 @@ def test_post_2():
             ''',
 	    	"tags":["docker","proxy","dns","apt"],
 	    	"hour":17,
-	    	"day":5
+	    	"day":5,
+	    	"reputation": 1863
 
 	    }
 
@@ -168,7 +170,8 @@ def test_post_3():
 			
 			"hour":17,
 	    	"day":5,
-	    	"tags":["python","django","nginx","uwsgi"]
+	    	"tags":["python","django","nginx","uwsgi"],
+	    	"reputation":99
 	    }
 	correct_title="nginx cant't serve files correctly when deploy a django project with nginx and uwsgi on ubuntu 16.04"
 	body='''

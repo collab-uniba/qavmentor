@@ -22,7 +22,8 @@ def test_tips_1():
 	    	''',
 	    	"tags":["python","virtualenv"],
 	    	"hour":17,
-	    	"day":5
+	    	"day":5,
+	    	"reputation": 15
 
 	    }
 
