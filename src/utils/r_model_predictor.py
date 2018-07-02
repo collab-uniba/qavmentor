@@ -18,7 +18,7 @@ class RModelPredictor:
 		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
 		print("_______________ %s seconds _______________" % (time.time() - start_time))		  
 		prediction = float((r.text).replace("[", "").replace("]", ""))
-		predictionByReputation = (prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']]
+		predictionByReputation = ((prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
 		if predictionByReputation < 100:
 			return predictionByReputation
 		else:
