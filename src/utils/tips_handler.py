@@ -18,11 +18,11 @@ class TipsHandler:
 	
 
 
-	def choseTips(self,features,category):
+	def choseTips(self,features):
 		chosenTips=[]
 		
 
-		#cycle for tips
+		#cycle trough tips
 		for tip in self.__tips:
 			#if tip["category"] in category:
 			problem=tip["problem"]
