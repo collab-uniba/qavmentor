@@ -30,7 +30,7 @@ def test_tips_1():
 	tipsHandler=TipsHandler()
 	features = FeatureAnalysis(req,debug=True)
 	response=features.extractFeatures()
-	tips=tipsHandler.choseTips(response,"")
+	tips=tipsHandler.choseTips(response)
 	assert(len(tips) != 0)
 
 '''
