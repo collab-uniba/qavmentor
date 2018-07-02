@@ -22,9 +22,10 @@ class FeatureAnalysis:
 			self.__SentimentPositiveScore= False
 			self.__SentimentNegativeScore= False 
 			self.__Ntag = False
-			self.__AvgUpperCharsPPost = 1
+			self.__AvgUpperCharsPPost = 0
 			self.__URL = False
-			self.__AvgUpperCharsPPostDisc=None
+			self.__AvgUpperCharsPPostDisc = None
+			self.__UserReputation = None
 	
 
 
@@ -41,7 +42,8 @@ class FeatureAnalysis:
 					"NTag": str(self.__Ntag),
 					"AvgUpperCharsPPost":self.__AvgUpperCharsPPost,
 					"URL": str(self.__URL),
-					"AvgUpperCharsPPostDisc":self.__AvgUpperCharsPPostDisc
+					"AvgUpperCharsPPostDisc":self.__AvgUpperCharsPPostDisc,
+					"UserReputation":self.__UserReputation
 				}
 
 
@@ -56,10 +58,10 @@ class FeatureAnalysis:
 		self.__GMTHour = self.__getDayTime()
 		#BodyLength
 		self.__BodyLength = self.__assignCluster(self.__getTextLength(self.__post.body), 
-															{"Short":[0,90],"Medium":[90,200],"Long":[200,9999999]})
+															{"Short":[0,90],"Medium":[90,200],"Long":[200,99999999]})
 
 		self.__TitleLength = self.__assignCluster(self.__getTextLength(self.__post.title), 
-													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,9999999]})
+													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,99999999]})
 		#SentimentScore
 		if not self.__debug:		
 			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
@@ -73,10 +75,16 @@ class FeatureAnalysis:
 															)
 		#AvgUpperCharsPPost cluster
 		self.__AvgUpperCharsPPostDisc= self.__assignCluster(float(self.__AvgUpperCharsPPost),{"Low":[0,0.10],"High":[0.10,1]})
+
 		#URL
 		if len(self.__post.url) > 0:
 			self.__URL= True
 
+		self.__UserReputation = self.__assignCluster(self.__post.reputation, 
+								{"New":[0,10], "Low":[10,1000], 
+								 "Established":[1000,20000],
+								 "Trusted":[20000,99999999]
+								})	
 
 
 	def __isWeekend(self):

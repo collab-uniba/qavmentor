@@ -11,6 +11,7 @@ class Post:
 		self.hour = request['hour']
 		self.day = request['day']
 		self.tags = request['tags']
+		self.reputation = request['reputation']
 
 
 	def __getParsedBody(self, request):

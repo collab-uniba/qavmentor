@@ -6,7 +6,7 @@ import json
 
 class RModelPredictor:
 	def __init__(self, features):
-		self.__data = {"UserReputation": "New", "CodeSnippet": features["CodeSnippet"], "Weekday": features['Weekday'],
+		self.__data = {"UserReputation": features["UserReputation"], "CodeSnippet": features["CodeSnippet"], "Weekday": features['Weekday'],
 		 "GMTHour": features['GMTHour'], "BodyLength": features['BodyLength'], "TitleLength": features['TitleLength'],
 		  "URL": features['URL'], "AvgUpperCharsPPost": features['AvgUpperCharsPPost'], "SentimentPositiveScore": features['SentimentPositiveScore'],
 		  "SentimentNegativeScore": features['SentimentNegativeScore'], "NTag": features['NTag']}
