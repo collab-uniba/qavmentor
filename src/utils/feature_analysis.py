@@ -81,7 +81,9 @@ class FeatureAnalysis:
 			self.__URL= True
 
 		self.__UserReputation = self.__assignCluster(self.__post.reputation, 
-								{"New":[0,10], "Low":[10,1000], 
+								{
+								 "New":[0,10], 
+								 "Low":[10,1000], 
 								 "Established":[1000,20000],
 								 "Trusted":[20000,99999999]
 								})	
