@@ -17,12 +17,21 @@ def root():
 	return('It Works!')
 
 
-@app.route('/analyze', methods=['POST'])
-def analyze():
+@app.route('/getPredictionRaw', methods=['POST'])
+def getPredictionRaw():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extractFeatures()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predict())
+	prediction = (predictor.predicRaw())
+	return json.dumps({"prediction": prediction})
+
+
+@app.route('/getPredictionDiscretized', methods=['POST'])
+def getPredictionDiscretized():
+	feature_extractor = FeatureAnalysis(request.get_json())
+	features = feature_extractor.extractFeatures()
+	predictor = RModelPredictor(features)
+	prediction = (predictor.predictDiscretize())
 	return json.dumps({"prediction": prediction})
 
 
