@@ -36,7 +36,7 @@ def getPredictionDiscretized():
 
 
 @app.route('/getPredictionDiscretizedByUser', methods=['POST'])
-def getPredictionDiscretized():
+def getPredictionDiscretizedByUser():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extractFeatures()
 	predictor = RModelPredictor(features)
