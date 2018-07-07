@@ -22,7 +22,7 @@ def getPredictionRaw():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extractFeatures()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predicRaw())
+	prediction = (predictor.predictRaw())
 	return json.dumps({"prediction": prediction})
 
 
