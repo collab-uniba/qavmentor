@@ -31,7 +31,16 @@ def getPredictionDiscretized():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extractFeatures()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predictDiscretize())
+	prediction = (predictor.predictDiscretized())
+	return json.dumps({"prediction": prediction})
+
+
+@app.route('/getPredictionDiscretizedByUser', methods=['POST'])
+def getPredictionDiscretized():
+	feature_extractor = FeatureAnalysis(request.get_json())
+	features = feature_extractor.extractFeatures()
+	predictor = RModelPredictor(features)
+	prediction = (predictor.predictDiscretizedByUser())
 	return json.dumps({"prediction": prediction})
 
 
@@ -43,7 +52,6 @@ def getTip():
 	features = feature_extractor.extractFeatures()
 	tips=tipsHandler.choseTips(features)
 	return json.dumps(tips)
-
 
 
 if __name__ == '__main__':

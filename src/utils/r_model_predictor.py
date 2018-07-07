@@ -10,14 +10,24 @@ class RModelPredictor:
 		 "GMTHour": features['GMTHour'], "BodyLength": features['BodyLength'], "TitleLength": features['TitleLength'],
 		  "URL": features['URL'], "AvgUpperCharsPPost": features['AvgUpperCharsPPost'], "SentimentPositiveScore": features['SentimentPositiveScore'],
 		  "SentimentNegativeScore": features['SentimentNegativeScore'], "NTag": features['NTag']}
+		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
+		
+		self.__prediction = float((r.text).replace("[", "").replace("]", ""))
 
 	
-	def predictDiscretize(self):
+
+	def predictDiscretizedByUser(self):
 		start_time = time.time()
-		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
-		print("_______________ %s seconds _______________" % (time.time() - start_time))		  
-		prediction = float((r.text).replace("[", "").replace("]", ""))
-		predictionByReputation = ((prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
+		predictionByReputation = ((self.__prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
+		if predictionByReputation < 100:
+			return predictionByReputation
+		else:
+			return 100
+
+
+	def predictDiscretized(self):
+		start_time = time.time()
+		predictionByReputation = ((self.__prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
 		if predictionByReputation < 100:
 			return predictionByReputation
 		else:
@@ -25,8 +35,4 @@ class RModelPredictor:
 
 
 	def predictRaw(self):
-		start_time = time.time()
-		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
-		print("_______________ %s seconds _______________" % (time.time() - start_time))		  
-		prediction = float((r.text).replace("[", "").replace("]", ""))
-		return (prediction*100)
+		return (self.__prediction*100)
