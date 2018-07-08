@@ -1,0 +1,24 @@
+[
+	{
+		"in":
+		{
+
+			"CodeSnippet":"False",
+			"Weekday":"Weekday",
+			"GMTHour":"Afternoon",
+			"BodyLength":"Long",
+			"TitleLength":"Long",
+			"SentimentPositiveScore":"true",
+			"SentimentNegativeScore":"true",
+			"AvgUpperCharsPPostDisc":"Low",
+			"NTag":"True",
+			"URL":"False",
+			"UserReputation":"Established"
+		},
+		"out":
+		{
+			"indexes":[0,2]
+		}
+
+	}
+]

@@ -1,7 +1,7 @@
 library("rjson")
 
 modello <<- readRDS(file="/var/www/qavmentor/R_service/modelloR.RDS")
-#modello <<- readRDS(paste(normalizePath(dirname(".")),"modelloR.RDS",sep="/")) for testing 
+#modello <<- readRDS(paste(normalizePath(dirname(".")),"modelloR.RDS",sep="/")) #for testing windows
 
 #* @post /model_predict
 model_predict <- function(req) {
@@ -19,7 +19,7 @@ model_predict <- function(req) {
 	#,"\n",json_data$SentimentPositiveScore
 	#,"\n",json_data$SentimentNegativeScore
 	#,"\n",json_data$NTag)
-  	newdata <- data.frame(UserReputation="New",
+  	newdata <- data.frame(UserReputation=json_data$UserReputation,
 					CodeSnippet=sapply(as.character(json_data$CodeSnippet),switch,'False'=as.logical(FALSE),'True'=as.logical(TRUE)), 
 					Weekday=json_data$Weekday, GMTHour=json_data$GMTHour, BodyLength=json_data$BodyLength,
 					TitleLength=json_data$TitleLength, 

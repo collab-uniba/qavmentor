@@ -5,7 +5,11 @@ import json
 
 class RModelPredictor:
 	def __init__(self, features):
-		self.__maxScoreByReputation = {"New":28,"Low":48,"Established":51, "Trusted":55}
+		self.__maxScoreByReputation = {"New":{"min":0.0076,"max":0.3037},
+										"Low":{"min":0.018,"max":0.5109},
+										"Established":{"min":0.02,"max":0,5386},
+										"Trusted":{"min":0.0241,"max":0.5849}}
+
 		self.__data = {"UserReputation": features["UserReputation"], "CodeSnippet": features["CodeSnippet"], "Weekday": features['Weekday'],
 		 "GMTHour": features['GMTHour'], "BodyLength": features['BodyLength'], "TitleLength": features['TitleLength'],
 		  "URL": features['URL'], "AvgUpperCharsPPost": features['AvgUpperCharsPPost'], "SentimentPositiveScore": features['SentimentPositiveScore'],
@@ -14,24 +18,23 @@ class RModelPredictor:
 		
 		self.__prediction = float((r.text).replace("[", "").replace("]", ""))
 
+		self.__maxAbsoluteScorePossibile=0.5849
+		self.__minAbsoluteScorePossibile=0.0076
+
 	
 
 	def predictDiscretizedByUser(self):
-		start_time = time.time()
-		predictionByReputation = ((self.__prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
-		if predictionByReputation < 100:
-			return predictionByReputation
-		else:
-			return 100
+		reputation=self.__data["UserReputation"]
+		magicNumber=self.__maxScoreByReputation[reputation]["max"]-self.__maxScoreByReputation[reputation]["min"]
+		predictionScaledByReputation = (self.__prediction*100)/magicNumber
+		return predictionScaledByReputation
+
 
 
 	def predictDiscretized(self):
-		start_time = time.time()
-		predictionByReputation = ((self.__prediction*100)/self.__maxScoreByReputation[self.__data['UserReputation']])*100
-		if predictionByReputation < 100:
-			return predictionByReputation
-		else:
-			return 100
+		magicNumber=self.__maxAbsoluteScorePossibile-self.__minAbsoluteScorePossibile
+		predictionScaled = (self.__prediction*100)/magicNumber
+		return predictionScaled
 
 
 	def predictRaw(self):
