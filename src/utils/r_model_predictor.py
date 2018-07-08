@@ -7,7 +7,7 @@ class RModelPredictor:
 	def __init__(self, features):
 		self.__maxScoreByReputation = {"New":{"min":0.0076,"max":0.3037},
 										"Low":{"min":0.018,"max":0.5109},
-										"Established":{"min":0.02,"max":0,5386},
+										"Established":{"min":0.02,"max":0.5386},
 										"Trusted":{"min":0.0241,"max":0.5849}}
 
 		self.__data = {"UserReputation": features["UserReputation"], "CodeSnippet": features["CodeSnippet"], "Weekday": features['Weekday'],
