@@ -37,26 +37,19 @@
 	{
 		"index":5,
 		"category":"extra",
-		"problem":{"GMTHour":"Evening"},
+		"problem":{"GMTHour":"Afternoon"},
 		"title":"You're posting in the evening.",
 		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
 	},
 	{
 		"index":6,
 		"category":"extra",
-		"problem":{"GMTHour":"Nigth"},
-		"title":"You're posting in the nigth.",
-		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
-	},
-	{
-		"index":7,
-		"category":"extra",
 		"problem":{"GMTHour":"Morning"},
 		"title":"You're posting in the Morning.",
 		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
 	},
 	{
-		"index":8,
+		"index":7,
 		"category":"post",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Too much capital letters",

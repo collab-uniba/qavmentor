@@ -99,11 +99,11 @@ class FeatureAnalysis:
 	def __getDayTime(self):
 		int_hour = int(self.__post.hour)
 
-		if int_hour >= 15 and int_hour <= 18:
+		if int_hour >= 12 and int_hour <= 17:
 			return 'Afternoon'
-		elif int_hour > 18 and int_hour <= 23:
+		elif int_hour > 18 and int_hour <= 22:
 			return 'Evening'
-		elif int_hour > 23 and int_hour <= 6:
+		elif int_hour > 23 and int_hour <= 5:
 			return 'Nigth'
 		else:
 			return 'Morning'
