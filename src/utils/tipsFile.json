@@ -24,15 +24,15 @@
 		"index":3,
 		"category":"body",
 		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Semes that your post have a positive emotinal polarization.",
-		"msg":"Sentiment of your question should be as neutral as possible"
+		"title":"Write questions using a neutral emotional style",
+		"msg":""
 	},
 	{
 		"index":4,
 		"category":"body",
 		"problem":{"SentimentNegativeScore":"True"},
-		"title":"Semes that your post have a negative emotinal polarization",
-		"msg":"Sentiment of your question should be as neutral as possible"
+		"title":"Write questions using a neutral emotional style",
+		"msg":""
 	},
 	{
 		"index":5,
