@@ -3,8 +3,8 @@
 		"index":0,
 		"category":"body",
 		"problem":{"CodeSnippet":"False"},
-		"title":"There is no Code Sample.",
-		"msg":"In order to help people helping you, try to write some code example that explain better what is your problem if it is possible"
+		"title":"Provide sample code and data",
+		"msg":""
 	},
 	{
 		"index":1,
