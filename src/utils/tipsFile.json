@@ -1,49 +1,49 @@
 [
 	{
 		"index":0,
-		"category":"body",
+		"category":"actionable",
 		"problem":{"CodeSnippet":"False"},
 		"title":"There is no Code Sample.",
 		"msg":"In order to help people helping you, try to write some code example that explain better what is your problem if it is possible"
 	},
 	{
 		"index":1,
-		"category":"body",
+		"category":"actionable",
 		"problem":{"BodyLength":"Medium"},
 		"title":"Seems that your post is quite long...",
 		"msg":"Try to be concise, writing easy and readable question"
 	},
 	{
 		"index":2,
-		"category":"body",
+		"category":"actionable",
 		"problem":{"BodyLength":"Long"},
 		"title":"Your question is too long.",
 		"msg":"Too long questions should be avoided since people do not like to read too much, try to be concise as possible."
 	},
 	{
 		"index":3,
-		"category":"body",
+		"category":"actionable",
 		"problem":{"SentimentPositiveScore":"True"},
 		"title":"Semes that your post have a positive emotinal polarization.",
 		"msg":"Sentiment of your question should be as neutral as possible"
 	},
 	{
 		"index":4,
-		"category":"body",
+		"category":"actionable",
 		"problem":{"SentimentNegativeScore":"True"},
 		"title":"Semes that your post have a negative emotinal polarization",
 		"msg":"Sentiment of your question should be as neutral as possible"
 	},
 	{
 		"index":5,
-		"category":"extra",
+		"category":"not_actionable",
 		"problem":{"GMTHour":"Afternoon"},
 		"title":"You're posting in the evening.",
 		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
 	},
 	{
 		"index":6,
-		"category":"extra",
+		"category":"not_actionable",
 		"problem":{"GMTHour":"Morning"},
 		"title":"You're posting in the Morning.",
 		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
