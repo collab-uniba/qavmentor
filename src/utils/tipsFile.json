@@ -24,14 +24,14 @@
 		"index":3,
 		"category":"body",
 		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Write questions using a neutral emotional style",
+		"title":"Use a neutral emotional style",
 		"msg":""
 	},
 	{
 		"index":4,
 		"category":"body",
 		"problem":{"SentimentNegativeScore":"True"},
-		"title":"Write questions using a neutral emotional style",
+		"title":"Use a neutral emotional style",
 		"msg":""
 	},
 	{
