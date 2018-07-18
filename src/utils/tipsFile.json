@@ -3,56 +3,48 @@
 		"index":0,
 		"category":"actionable",
 		"problem":{"CodeSnippet":"False"},
-		"title":"Provide sample code and data",
-		"msg":""
+		"title":"Provide sample code and data"
 	},
 	{
 		"index":1,
 		"category":"actionable",
 		"problem":{"BodyLength":"Medium"},
-		"title":"Be concise",
-		"msg":""
+		"title":"Be concise"
 	},
 	{
 		"index":2,
 		"category":"actionable",
 		"problem":{"BodyLength":"Long"},
-		"title":"Be concise",
-		"msg":""
+		"title":"Be concise"
 	},
 	{
 		"index":3,
 		"category":"actionable",
 		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Use a neutral emotional style",
-		"msg":""
+		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":4,
 		"category":"actionable",
 		"problem":{"SentimentNegativeScore":"True"},
-		"title":"Use a neutral emotional style",
-		"msg":""
+		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":5,
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Afternoon"},
-		"title":"You're posting in the evening.",
-		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+		"title":"You're posting in the evening."
 	},
 	{
 		"index":6,
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Morning"},
-		"title":"You're posting in the Morning.",
-		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+		"title":"You're posting in the Morning."
 	},
 	{
 		"index":7,
 		"category":"post",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
-		"title":"Use capital letters where appropriate",
-		"msg":""
+		"title":"Use capital letters where appropriate"
 	}								
 ]
