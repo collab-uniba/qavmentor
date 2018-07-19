@@ -1,58 +1,58 @@
 [
 	{
 		"index":0,
-		"category":"body",
+		"found":"none",
+		"category":"actionable",
 		"problem":{"CodeSnippet":"False"},
-		"title":"There is no Code Sample.",
-		"msg":"In order to help people helping you, try to write some code example that explain better what is your problem if it is possible"
+		"title":"Provide sample code and data"
 	},
 	{
 		"index":1,
-		"category":"body",
+		"found":"none",		
+		"category":"actionable",
 		"problem":{"BodyLength":"Medium"},
-		"title":"Seems that your post is quite long...",
-		"msg":"Try to be concise, writing easy and readable question"
+		"title":"Be concise"
 	},
 	{
 		"index":2,
-		"category":"body",
+		"found":"none",
+		"category":"actionable",
 		"problem":{"BodyLength":"Long"},
-		"title":"Your question is too long.",
-		"msg":"Too long questions should be avoided since people do not like to read too much, try to be concise as possible."
+		"title":"Be concise"
 	},
 	{
 		"index":3,
-		"category":"body",
+		"found":"none",
+		"category":"actionable",
 		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Positive Sentiment True.",
-		"msg":"Sentiment of your question should be as neutral as possible"
+		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":4,
-		"category":"body",
+		"found":"none",
+		"category":"actionable",
 		"problem":{"SentimentNegativeScore":"True"},
-		"title":"Negative Sentiment True",
-		"msg":"Sentiment of your question should be as neutral as possible"
+		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":5,
-		"category":"extra",
-		"problem":{"GMTHour":"Evening"},
-		"title":"You're posting in the evening.",
-		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+		"found":"none",
+		"category":"not_actionable",
+		"problem":{"GMTHour":"Afternoon"},
+		"title":"You're posting in the evening."
 	},
 	{
 		"index":6,
-		"category":"extra",
+		"found":"none",
+		"category":"not_actionable",
 		"problem":{"GMTHour":"Morning"},
-		"title":"You're posting in the Morning.",
-		"msg":"We observed that the highest proportion of question with accepted answer to be in the time frame 3 to 6 PM"
+		"title":"You're posting in the Morning."
 	},
 	{
 		"index":7,
+		"found":"none",
 		"category":"post",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
-		"title":"Too much capital letters",
-		"msg":"Try to use capital letters where appropiate"
+		"title":"Use capital letters where appropriate"
 	}								
 ]

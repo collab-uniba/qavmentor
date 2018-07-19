@@ -1,48 +1,56 @@
 [
 	{
 		"index":0,
+		"found":"none",
 		"category":"actionable",
 		"problem":{"CodeSnippet":"False"},
 		"title":"Provide sample code and data"
 	},
 	{
 		"index":1,
+		"found":"none",		
 		"category":"actionable",
 		"problem":{"BodyLength":"Medium"},
 		"title":"Be concise"
 	},
 	{
 		"index":2,
+		"found":"none",
 		"category":"actionable",
 		"problem":{"BodyLength":"Long"},
 		"title":"Be concise"
 	},
 	{
 		"index":3,
+		"found":"none",
 		"category":"actionable",
 		"problem":{"SentimentPositiveScore":"True"},
 		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":4,
+		"found":"none",
 		"category":"actionable",
 		"problem":{"SentimentNegativeScore":"True"},
 		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":5,
+		"found":"none",
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Afternoon"},
 		"title":"You're posting in the evening."
 	},
 	{
 		"index":6,
+		"found":"none",
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Morning"},
 		"title":"You're posting in the Morning."
 	},
 	{
 		"index":7,
+		"found":"none",
 		"category":"post",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"

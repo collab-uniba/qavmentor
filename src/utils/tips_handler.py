@@ -17,6 +17,11 @@ class TipsHandler:
 			#if tip["category"] in category:
 			problem=tip["problem"]
 			for key,value in features.items():
+				
 				if key in problem and value==problem[key]:
-					chosenTips.append(tip)
+					tip["found"]=True
+				else:
+					tip["found"]=False
+				
+				chosenTips.append(tip)
 		return chosenTips
