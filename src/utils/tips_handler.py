@@ -11,9 +11,19 @@ class TipsHandler:
 
 
 	def choseTips(self,features):
-		chosenTips=[]
+		clientTips=[]
 		indexesTips=[]
-		
+
+		clientTips=self.__tips
+
+		for tip in clientTips:
+			problem=tip["problem"]
+			for key,value in features.items():
+				if key in problem and value==problem[key]:
+					tip["found"]=True		
+
+
+		'''
 		for tip in self.__tips:
 			#if tip["category"] in category:
 			problem=tip["problem"]
@@ -25,4 +35,6 @@ class TipsHandler:
 						tip["found"]=False
 					chosenTips.append(tip)
 					indexesTips.append(tip["index"])
-		return chosenTips
+		print(indexesTips)
+		'''
+		return clientTips
