@@ -10,15 +10,17 @@ from tips_handler import TipsHandler
 
 def test_tips():
 
-	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_tips_questions.json',"r")
+	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_tips_questions.json',"r",encoding="utf8")
 	features = json.loads(f.read())
 	f.close()
 
 	tipsHandler=TipsHandler()
 
 	for test in features:
+		print("test index : "+str(test["id"]))
 		tips=tipsHandler.choseTips(test["in"])
 		assert(len(tips)!=0)
+		print("passed")
 '''
 		tips_index_list=[]
 		for tip in tips:

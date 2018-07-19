@@ -8,10 +8,11 @@ from post import Post
 
 
 def test_post():
-	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_post_questions.json',"r")
+	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_post_questions.json',"r",encoding="utf8")
 	questions = json.loads(f.read())
 	f.close()
 	for q in questions:
+		print("test index : "+str(q["id"]))
 		req = q["in"]
 		post=Post(req)
 		out = q["out"]
@@ -21,3 +22,4 @@ def test_post():
 		assert(post.hour==out["hour"])
 		assert(post.day==out["day"])
 		assert(len(post.url)==out["url"])
+		print("passed")

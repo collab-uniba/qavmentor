@@ -3,16 +3,18 @@ import sys
 import os.path
 import json
 
+
 src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/src/utils/"
 sys.path.append(src_code_path)
 from  feature_analysis import FeatureAnalysis 
 
 
 def test_features():
-	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_features_questions.json',"r")
+	f = open(os.path.dirname(os.path.abspath(__file__))+'/test_features_questions.json',"r",encoding="utf8")
 	questions = json.loads(f.read())
 	f.close()
 	for q in questions:
+		print("test index : "+str(q["id"]))
 		req = q["in"]
 		features = FeatureAnalysis(req,debug=True)
 		response=features.extractFeatures()
@@ -28,3 +30,4 @@ def test_features():
 		#assert(response['AvgUpperCharsPPost']=="Low")
 		assert(response['URL']==out['URL'])
 		assert(response['UserReputation']==out['UserReputation'])
+		print("passed")
