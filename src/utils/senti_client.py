@@ -21,7 +21,7 @@ class sentistrength():
     def __del__(self):
         if self.sentistrength:
             os.killpg(self.sentistrength.pid,15)
-
+'''
     def run_server(self, language):
         if language!=self.language and self.sentistrength:
             os.killpg(self.sentistrength.pid,15)
@@ -40,7 +40,7 @@ class sentistrength():
                 raise Exception("unable to start server, is there a process already running? ")
         return sock
     
-
+'''
     def get_sentiment(self, string_to_code, language="EN"):
         url_encoded = urllib.parse.quote(string_to_code)
         request_string = "GET /%s HTTP/1.0 \r\n\r\n" %url_encoded
