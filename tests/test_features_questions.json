@@ -17,6 +17,8 @@
 			"GMTHour":"Afternoon",
 			"BodyLength":"Long",
 			"TitleLength":"Long",
+			"SentimentPositiveScore":"False",
+		    "SentimentNegativeScore":"False",
 			"NTag":"True",
 			"URL":"False",
 			"UserReputation":"Established"
@@ -41,6 +43,8 @@
 			"GMTHour":"Evening",
 			"BodyLength":"Long",
 			"TitleLength":"Long",
+			"SentimentPositiveScore":"True",
+		    "SentimentNegativeScore":"True",			
 			"NTag":"True",
 			"URL":"True",
 			"UserReputation":"New"
@@ -65,6 +69,8 @@
 			"GMTHour":"Nigth",
 			"BodyLength":"Long",
 			"TitleLength":"Long",
+			"SentimentPositiveScore":"True",
+		    "SentimentNegativeScore":"True",			
 			"NTag":"True",
 			"URL":"True",
 			"UserReputation":"Low"
@@ -89,6 +95,8 @@
 			"GMTHour":"Morning",
 			"BodyLength":"Long",
 			"TitleLength":"Long",
+			"SentimentPositiveScore":"False",
+		    "SentimentNegativeScore":"False",			
 			"NTag":"True",
 			"URL":"True",
 			"UserReputation":"Low"

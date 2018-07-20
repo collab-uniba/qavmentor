@@ -16,7 +16,7 @@ def test_features():
 	for q in questions:
 		print("test index : "+str(q["id"]))
 		req = q["in"]
-		features = FeatureAnalysis(req,debug=True)
+		features = FeatureAnalysis(req)
 		response=features.extractFeatures()
 		out = q["out"]
 		assert(response['CodeSnippet']==out['CodeSnippet'])
@@ -24,8 +24,8 @@ def test_features():
 		assert(response['GMTHour']==out['GMTHour'])
 		assert(response['BodyLength']==out['BodyLength'])
 		assert(response['TitleLength']==out['TitleLength'])
-		#assert(response['PositiveSentimentScore']==False)
-		#assert(response['NegativeSentimentScore']==False)
+		assert(response['SentimentPositiveScore']==out['SentimentPositiveScore'])
+		assert(response['SentimentNegativeScore']==out['SentimentNegativeScore'])
 		assert(response['NTag']==out['NTag'])
 		#assert(response['AvgUpperCharsPPost']=="Low")
 		assert(response['URL']==out['URL'])
