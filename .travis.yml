@@ -9,7 +9,7 @@ install:
 - pip install -r requirements.txt
 - echo "-------------------------------- folder ---------------------------------------"
 - ls
-- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./src/utils/SentiStrengthCom.jar sentidata ./src/utils/EN/ 30000
+- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./src/utils/SentiStrengthCom.jar sentidata ./src/utils/EN/ listen 30000
 script:
 - pytest --cov=./src
 before_install:
