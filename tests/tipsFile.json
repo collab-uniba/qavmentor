@@ -10,48 +10,27 @@
 		"index":1,
 		"found":false,		
 		"category":"actionable",
-		"problem":{"BodyLength":"Medium"},
+		"problem":{"BodyLength":"Medium","BodyLength":"Long"},
 		"title":"Be concise"
 	},
 	{
 		"index":2,
 		"found":false,
 		"category":"actionable",
-		"problem":{"BodyLength":"Long"},
-		"title":"Be concise"
+		"problem":{"SentimentPositiveScore":"True","SentimentNegativeScore":"True"},
+		"title":"Use a neutral emotional style"
 	},
 	{
 		"index":3,
 		"found":false,
-		"category":"actionable",
-		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Use a neutral emotional style"
+		"category":"not_actionable",
+		"problem":{"GMTHour":"Afternoon","GMTHour":"Morning"},
+		"title":"You're posting in the evening."
 	},
 	{
 		"index":4,
 		"found":false,
 		"category":"actionable",
-		"problem":{"SentimentNegativeScore":"True"},
-		"title":"Use a neutral emotional style"
-	},
-	{
-		"index":5,
-		"found":false,
-		"category":"not_actionable",
-		"problem":{"GMTHour":"Afternoon"},
-		"title":"You're posting in the evening."
-	},
-	{
-		"index":6,
-		"found":false,
-		"category":"not_actionable",
-		"problem":{"GMTHour":"Morning"},
-		"title":"You're posting in the Morning."
-	},
-	{
-		"index":7,
-		"found":false,
-		"category":"post",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"
 	}								
