@@ -51,7 +51,7 @@
 	{
 		"index":7,
 		"found":false,
-		"category":"post",
+		"category":"actionable",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"
 	}								
