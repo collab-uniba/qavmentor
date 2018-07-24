@@ -23,20 +23,6 @@
 	{
 		"index":3,
 		"found":false,
-		"category":"not_actionable",
-		"problem":{"GMTHour":"Morning"},
-		"title":"You are posting in the Morning"
-	},
-	{
-		"index":4,
-		"found":false,
-		"category":"not_actionable",
-		"problem":{"GMTHour":"Afternoon"},
-		"title":"You are posting in the Afternoon"
-	},
-	{
-		"index":5,
-		"found":false,
 		"category":"actionable",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"
