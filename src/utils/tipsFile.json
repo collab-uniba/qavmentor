@@ -25,14 +25,14 @@
 		"found":false,
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Morning"},
-		"title":"You're posting in the Morning."
+		"title":"You are posting in the Morning"
 	},
 	{
 		"index":4,
 		"found":false,
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Afternoon"},
-		"title":"You're posting in the Afternoon."
+		"title":"You are posting in the Afternoon"
 	},
 	{
 		"index":5,
