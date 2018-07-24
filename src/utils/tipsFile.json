@@ -28,14 +28,14 @@
 		"title":"You're posting in the Morning."
 	},
 	{
-		"index":3,
+		"index":4,
 		"found":false,
 		"category":"not_actionable",
 		"problem":{"GMTHour":"Afternoon"},
 		"title":"You're posting in the Afternoon."
 	},
 	{
-		"index":4,
+		"index":5,
 		"found":false,
 		"category":"actionable",
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
