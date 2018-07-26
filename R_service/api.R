@@ -5,9 +5,9 @@ modello <<- readRDS(file="/var/www/qavmentor/R_service/modelloR.RDS")
 
 #* @post /model_predict
 model_predict <- function(req) {
-  cat(as.character(Sys.time()), "-", 
-    req$REQUEST_METHOD, req$PATH_INFO, "-", "\n")
-	json_data <- fromJSON(req$postBody)
+  #cat(as.character(Sys.time()), "-", 
+   # req$REQUEST_METHOD, req$PATH_INFO, "-", "\n")
+	#json_data <- fromJSON(req$postBody)
 
 	#cat("\n",json_data$CodeSnippet
 	#,"\n",json_data$Weekday

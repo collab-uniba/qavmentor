@@ -1,6 +1,6 @@
 import os
 import json
-
+import copy
 
 class TipsHandler:
 	def __init__(self,tipsFileName="tipsFile.json"):
@@ -14,7 +14,7 @@ class TipsHandler:
 		clientTips=[]
 		indexesTips=[]
 
-		clientTips=self.__tips
+		clientTips=copy.deepcopy(self.__tips)
 
 		for tip in clientTips:
 			problem=tip["problem"]
@@ -22,19 +22,4 @@ class TipsHandler:
 				if key in problem and value==problem[key]:
 					tip["found"]=True		
 
-
-		'''
-		for tip in self.__tips:
-			#if tip["category"] in category:
-			problem=tip["problem"]
-			for key,value in features.items():
-				if tip["index"] not in indexesTips:
-					if key in problem and value==problem[key]:
-						tip["found"]=True
-					else:
-						tip["found"]=False
-					chosenTips.append(tip)
-					indexesTips.append(tip["index"])
-		print(indexesTips)
-		'''
 		return clientTips
