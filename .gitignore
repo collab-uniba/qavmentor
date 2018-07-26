@@ -9,5 +9,6 @@
 /venv
 pip-selfcheck.json
 /tests/.pytest_cache
-/utils/__pycache__
-
+find . | \
+  grep -E "(__pycache__|\.pyc$)" | \
+  xargs rm -rf
