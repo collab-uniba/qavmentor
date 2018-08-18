@@ -2,6 +2,10 @@ language: python
 python:
 - '3.5'
 addons:
+  sonarcloud:
+    organization: "qavmentor" 
+    token:
+      secure: K/lxsJ1ildJo1oD8KrcTNven+351oufD9JhlRMxDtlI79IWJqqmdr2tV7HJQLaB0EUsQ8TDa9CsU+szw2QaVY2kZNdaNEAXPenZULStPOX133ryV0TUVAAN32+2FVprlVMx587Z/gRzkfQsjgsUMu3saEQRnp6UZB4JM5LGi9zJTDO9nbq8S3bWhbTiPEvURive/dCc0l8n+uyDunwbNZjiODogG/OREt6bzmcTxKkrHaxm/xzTQTISeVOrcOUzVOF5bTHaye2XaBsYF7f8gUVzduqfiKS1bQ+ra+++7qIVUvqXZKgL4uW9KaA3Z6KgECzJ7b4vzLHJlgK41eSXTxRv84i0Bv+1eGjnTehwc6rvZXRP9jyRL8Egiqg0t1/r1uYayg3YPJ/TdrPW43KPZkTwWHVVhvBYQKgC2gSCPaUbcUsGjCOda5HsaqXlmy7Jra/5FlmKJHJkkTGKiCWbXBUBZXFQnvueKOM0by7VCu/6CLrrIAxmfM1WCB3kGkDLfcOWJww8hBkeeggFJX4cGAuq2NTtopOIQ8ryZ8axFRORGjB3+gPa7fHvMNt0hfwJIGadm274oxNN0k/BlkdWFXmqCGNB3jjql6VdRtgv7uGuPgjR6TRRW0vYYDawLDos84SL391I2bMrQJOlltSndNRIEk17c8spRkWVwndfE+Rs= # encrypted value of your token  
   apt:
     packages:
       - oracle-java8-set-default
@@ -10,6 +14,7 @@ install:
 - /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./src/utils/SentiStrengthCom.jar sentidata ./src/utils/EN/ listen 30000 &
 script:
 - pytest --cov=./src
+- sonar-scanner
 before_install:
 - openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
   -in .travis/id_rsa.enc -out .travis/id_rsa -d
