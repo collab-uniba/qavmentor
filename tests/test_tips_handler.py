@@ -14,23 +14,10 @@ def test_tips():
 	features = json.loads(f.read())
 	f.close()
 
-	tipsHandler=TipsHandler()
+	tips_handler=TipsHandler()
 
 	for test in features:
 		print("test index : "+str(test["id"]))
-		tips=tipsHandler.choseTips(test["in"])
+		tips=tips_handler.chose_tips(test["in"])
 		assert(len(tips)!=0)
 		print("passed")
-'''
-		tips_index_list=[]
-		for tip in tips:
-			tips_index_list.append(tip["index"])
-
-		test_index_list=test["out"]
-
-		for test_index in test_index_list["indexes"]:
-			assert(test_index in tips_index_list )
-
-'''
-
-		

@@ -50,7 +50,7 @@ def get_tip():
 	json_request=request.get_json()
 	feature_extractor = FeatureAnalysis(json_request)
 	features = feature_extractor.extract_features()
-	tips=tipsHandler.choseTips(features)
+	tips=tipsHandler.chose_tips(features)
 	return json.dumps(tips)
 
 

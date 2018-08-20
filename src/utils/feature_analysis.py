@@ -2,7 +2,7 @@ import sys
 import os.path
 src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/utils/"
 sys.path.append(src_code_path)
-from senti_client import sentistrength
+from senti_client import SentiStrength
 import json
 from post import Post
 
@@ -64,7 +64,7 @@ class FeatureAnalysis:
 													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,99999999]})
 		#SentimentScore
 		if not self.__debug:		
-			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
+			senti_scores=SentiStrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
 			self.__sentiment_positive_score,self.__sentiment_negative_score= self.__get_sentiment_scores(senti_scores)
 		#Ntag
 		if len(self.__post.tags) > 1:

@@ -7,11 +7,10 @@ import sys
 import io
 
 
+#if not 'SentiStrengthCom.jar' in os.listdir('.'):
+#    pass
 
-if not 'SentiStrengthCom.jar' in os.listdir('.'):
-    pass
-
-class sentistrength():
+class SentiStrength():
     def __init__(self,language, address='127.0.0.1', port=30000):
         self.language = language
         self.sentistrength = ""

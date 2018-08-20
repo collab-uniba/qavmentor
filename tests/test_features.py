@@ -27,7 +27,6 @@ def test_features():
 		assert(response['SentimentPositiveScore']==out['SentimentPositiveScore'])
 		assert(response['SentimentNegativeScore']==out['SentimentNegativeScore'])
 		assert(response['NTag']==out['NTag'])
-		#assert(response['AvgUpperCharsPPost']=="Low")
 		assert(response['URL']==out['URL'])
 		assert(response['UserReputation']==out['UserReputation'])
 		print("passed")
