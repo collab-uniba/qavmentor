@@ -31,7 +31,7 @@ def get_prediction_discretized():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extract_features()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predictDiscretized())
+	prediction = (predictor.predict_discretized())
 	return json.dumps({"prediction": prediction})
 
 
@@ -40,7 +40,7 @@ def get_prediction_discretized_by_user():
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extract_features()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predictDiscretizedByUser())
+	prediction = (predictor.predict_discretized_by_user())
 	return json.dumps({"prediction": prediction})
 
 

@@ -5,7 +5,7 @@ import json
 
 class RModelPredictor:
 	def __init__(self, features):
-		self.__maxScoreByReputation = {"New":{"min":0.0076,"max":0.3543},
+		self.__maxscore_by_reputation = {"New":{"min":0.0076,"max":0.3543},
 										"Low":{"min":0.018,"max":0.5733},
 										"Established":{"min":0.02,"max":0.6001},
 										"Trusted":{"min":0.0241,"max":0.6443}}
@@ -17,24 +17,24 @@ class RModelPredictor:
 		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
 		self.__prediction = float((r.text).replace("[", "").replace("]", ""))
 
-		self.__maxAbsoluteScorePossibile=0.5849
-		self.__minAbsoluteScorePossibile=0.0076
+		self.__maxabsolute_score_possibile=0.5849
+		self.__minabsolute_score_possibile=0.0076
 
 	
 
-	def predictDiscretizedByUser(self):
+	def predict_discretized_by_user(self):
 		reputation=self.__data["UserReputation"]
-		magicNumber=self.__maxScoreByReputation[reputation]["max"]-self.__maxScoreByReputation[reputation]["min"]
-		predictionScaledByReputation = (self.__prediction*100)/magicNumber
-		return predictionScaledByReputation
+		magic_number=self.__maxscore_by_reputation[reputation]["max"]-self.__maxscore_by_reputation[reputation]["min"]
+		prediction_scaled_by_reputation = (self.__prediction*100)/magic_number
+		return prediction_scaled_by_reputation
 
 
 
-	def predictDiscretized(self):
-		magicNumber=self.__maxAbsoluteScorePossibile-self.__minAbsoluteScorePossibile
-		predictionScaled = (self.__prediction*100)/magicNumber
-		return predictionScaled
+	def predict_discretized(self):
+		magic_number=self.__maxabsolute_score_possibile-self.__minabsolute_score_possibile
+		prediction_scaled = (self.__prediction*100)/magic_number
+		return prediction_scaled
 
 
-	def predictRaw(self):
+	def predict_raw(self):
 		return (self.__prediction*100)

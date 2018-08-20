@@ -3,7 +3,7 @@ from scrapy.selector import Selector
 
 class Post:
 	def __init__(self, request):
-		body_features = self.__getParsedBody(request)
+		body_features = self.__get_parsed_body(request)
 		self.body = body_features['body']
 		self.title = request['title']
 		self.url = body_features['URL']
@@ -14,7 +14,7 @@ class Post:
 		self.reputation = request['reputation']
 
 
-	def __getParsedBody(self, request):
+	def __get_parsed_body(self, request):
 		body_features = {}
 
 		body_features['code'] = Selector(text=request["body"]).xpath('//code//text()').extract()
