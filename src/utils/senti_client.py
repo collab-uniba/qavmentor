@@ -13,7 +13,6 @@ import io
 class SentiStrength():
     def __init__(self,language, address='127.0.0.1', port=30000):
         self.language = language
-        self.sentistrength = ""
         self.port = port 
         self.address = address
 
