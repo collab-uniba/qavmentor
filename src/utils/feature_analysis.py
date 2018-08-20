@@ -29,8 +29,8 @@ class FeatureAnalysis:
 	
 
 
-	def extractFeatures(self):
-		self.__analyzeFeatures()
+	def extract_features(self):
+		self.__analyze_features()
 		return	{
 					"CodeSnippet":str(self.__code_snippet),
 					"Weekday": self.__weekday,
@@ -48,39 +48,39 @@ class FeatureAnalysis:
 
 
 
-	def __analyzeFeatures(self):
+	def __analyze_features(self):
 		#CodeSnippet
 		if len(self.__post.code) > 0:
 			self.__code_snippet= True
 		#Weekday
-		self.__weekday = self.__isWeekend()
+		self.__weekday = self.__is_weekend()
 		#GMTHour
-		self.__gmt_hour = self.__getDayTime()
+		self.__gmt_hour = self.__get_day_time()
 		#BodyLength
-		self.__body_length = self.__assignCluster(self.__getTextLength(self.__post.body), 
+		self.__body_length = self.__assign_cluster(self.__get_text_length(self.__post.body), 
 															{"Short":[0,90],"Medium":[90,200],"Long":[200,99999999]})
 
-		self.__title_length = self.__assignCluster(self.__getTextLength(self.__post.title), 
+		self.__title_length = self.__assign_cluster(self.__get_text_length(self.__post.title), 
 													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,99999999]})
 		#SentimentScore
 		if not self.__debug:		
 			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
-			self.__sentiment_positive_score,self.__sentiment_negative_score= self.__getSentimentScores(senti_scores)
+			self.__sentiment_positive_score,self.__sentiment_negative_score= self.__get_sentiment_scores(senti_scores)
 		#Ntag
 		if len(self.__post.tags) > 1:
 			self.__n_tag = True
 		#AvgUpperCharsPPost
-		self.__avg_upperchars_ppost = str(((self.__getUppercaseRatio(self.__post.body) +
-															self.__getUppercaseRatio(self.__post.title))/2),
+		self.__avg_upperchars_ppost = str(((self.__get_uppercase_ratio(self.__post.body) +
+															self.__get_uppercase_ratio(self.__post.title))/2),
 															)
 		#AvgUpperCharsPPost cluster
-		self.__avg_upperchars_ppost_disc= self.__assignCluster(float(self.__avg_upperchars_ppost),{"Low":[0,0.10],"High":[0.10,1]})
+		self.__avg_upperchars_ppost_disc= self.__assign_cluster(float(self.__avg_upperchars_ppost),{"Low":[0,0.10],"High":[0.10,1]})
 
 		#URL
 		if len(self.__post.url) > 0:
 			self.__url= True
 
-		self.__user_reputation = self.__assignCluster(self.__post.reputation, 
+		self.__user_reputation = self.__assign_cluster(self.__post.reputation, 
 								{
 								 "New":[0,10], 
 								 "Low":[10,1000], 
@@ -89,14 +89,14 @@ class FeatureAnalysis:
 								})	
 
 
-	def __isWeekend(self):
+	def __is_weekend(self):
 		if int(self.__post.day) == 0 or int(self.__post.day) == 6:
 			return 'Weekend'
 		else:
 			return 'Weekday'
 
 
-	def __getDayTime(self):
+	def __get_day_time(self):
 		int_hour = int(self.__post.hour)
 
 
@@ -111,7 +111,7 @@ class FeatureAnalysis:
 			return 'Morning'
 
 
-	def __assignCluster(self,n,clusters):
+	def __assign_cluster(self,n,clusters):
 		if n == 0:
 			return min(clusters.keys(),key=(lambda k: clusters[k]))
 		for key,value in clusters.items():
@@ -119,11 +119,11 @@ class FeatureAnalysis:
 				return key	
 
 
-	def __getTextLength(self,text):
+	def __get_text_length(self,text):
 		return len(text)
 	
 
-	def __getSentimentScores(self,scores):
+	def __get_sentiment_scores(self,scores):
 		positive= False
 		negative= False
 
@@ -137,7 +137,7 @@ class FeatureAnalysis:
 		return positive,negative
 
 
-	def __getUppercaseRatio(self,text):
+	def __get_uppercase_ratio(self,text):
 		ratio=0
 		upper_char=sum(1 for c in text if c.isupper())
 		if upper_char !=0:

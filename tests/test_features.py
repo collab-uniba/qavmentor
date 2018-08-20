@@ -17,7 +17,7 @@ def test_features():
 		print("test index : "+str(q["id"]))
 		req = q["in"]
 		features = FeatureAnalysis(req)
-		response=features.extractFeatures()
+		response=features.extract_features()
 		out = q["out"]
 		assert(response['CodeSnippet']==out['CodeSnippet'])
 		assert(response['Weekday']==out['Weekday'])
