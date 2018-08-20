@@ -14,36 +14,36 @@ class FeatureAnalysis:
 			raise Exception("Empty body")
 		else:
 			self.__post = Post(request)
-			self.__CodeSnippet = False
-			self.__Weekday = None
-			self.__GMTHour = None
-			self.__BodyLength = 0
-			self.__TitleLength= 0
-			self.__SentimentPositiveScore= False
-			self.__SentimentNegativeScore= False 
-			self.__Ntag = False
-			self.__AvgUpperCharsPPost = 0
-			self.__URL = False
-			self.__AvgUpperCharsPPostDisc = None
-			self.__UserReputation = None
+			self.__code_snippet = False
+			self.__weekday = None
+			self.__gmt_hour = None
+			self.__body_length = 0
+			self.__title_length= 0
+			self.__sentiment_positive_score= False
+			self.__sentiment_negative_score= False 
+			self.__n_tag = False
+			self.__avg_upperchars_ppost = 0
+			self.__url = False
+			self.__avg_upperchars_ppost_disc = None
+			self.__user_reputation = None
 	
 
 
 	def extractFeatures(self):
 		self.__analyzeFeatures()
 		return	{
-					"CodeSnippet":str(self.__CodeSnippet),
-					"Weekday": self.__Weekday,
-					"GMTHour": self.__GMTHour,
-					"BodyLength":self.__BodyLength,
-					"TitleLength": self.__TitleLength,
-					"SentimentPositiveScore": str(self.__SentimentPositiveScore),
-					"SentimentNegativeScore": str(self.__SentimentNegativeScore),
-					"NTag": str(self.__Ntag),
-					"AvgUpperCharsPPost":self.__AvgUpperCharsPPost,
-					"URL": str(self.__URL),
-					"AvgUpperCharsPPostDisc":self.__AvgUpperCharsPPostDisc,
-					"UserReputation":self.__UserReputation
+					"CodeSnippet":str(self.__code_snippet),
+					"Weekday": self.__weekday,
+					"GMTHour": self.__gmt_hour,
+					"BodyLength":self.__body_length,
+					"TitleLength": self.__title_length,
+					"SentimentPositiveScore": str(self.__sentiment_positive_score),
+					"SentimentNegativeScore": str(self.__sentiment_negative_score),
+					"NTag": str(self.__n_tag),
+					"AvgUpperCharsPPost":self.__avg_upperchars_ppost,
+					"URL": str(self.__url),
+					"AvgUpperCharsPPostDisc":self.__avg_upperchars_ppost_disc,
+					"UserReputation":self.__user_reputation
 				}
 
 
@@ -51,36 +51,36 @@ class FeatureAnalysis:
 	def __analyzeFeatures(self):
 		#CodeSnippet
 		if len(self.__post.code) > 0:
-			self.__CodeSnippet= True
+			self.__code_snippet= True
 		#Weekday
-		self.__Weekday = self.__isWeekend()
+		self.__weekday = self.__isWeekend()
 		#GMTHour
-		self.__GMTHour = self.__getDayTime()
+		self.__gmt_hour = self.__getDayTime()
 		#BodyLength
-		self.__BodyLength = self.__assignCluster(self.__getTextLength(self.__post.body), 
+		self.__body_length = self.__assignCluster(self.__getTextLength(self.__post.body), 
 															{"Short":[0,90],"Medium":[90,200],"Long":[200,99999999]})
 
-		self.__TitleLength = self.__assignCluster(self.__getTextLength(self.__post.title), 
+		self.__title_length = self.__assignCluster(self.__getTextLength(self.__post.title), 
 													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,99999999]})
 		#SentimentScore
 		if not self.__debug:		
 			senti_scores=sentistrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
-			self.__SentimentPositiveScore,self.__SentimentNegativeScore= self.__getSentimentScores(senti_scores)
+			self.__sentiment_positive_score,self.__sentiment_negative_score= self.__getSentimentScores(senti_scores)
 		#Ntag
 		if len(self.__post.tags) > 1:
-			self.__Ntag = True
+			self.__n_tag = True
 		#AvgUpperCharsPPost
-		self.__AvgUpperCharsPPost = str(((self.__getUppercaseRatio(self.__post.body) +
+		self.__avg_upperchars_ppost = str(((self.__getUppercaseRatio(self.__post.body) +
 															self.__getUppercaseRatio(self.__post.title))/2),
 															)
 		#AvgUpperCharsPPost cluster
-		self.__AvgUpperCharsPPostDisc= self.__assignCluster(float(self.__AvgUpperCharsPPost),{"Low":[0,0.10],"High":[0.10,1]})
+		self.__avg_upperchars_ppost_disc= self.__assignCluster(float(self.__avg_upperchars_ppost),{"Low":[0,0.10],"High":[0.10,1]})
 
 		#URL
 		if len(self.__post.url) > 0:
-			self.__URL= True
+			self.__url= True
 
-		self.__UserReputation = self.__assignCluster(self.__post.reputation, 
+		self.__user_reputation = self.__assignCluster(self.__post.reputation, 
 								{
 								 "New":[0,10], 
 								 "Low":[10,1000], 
