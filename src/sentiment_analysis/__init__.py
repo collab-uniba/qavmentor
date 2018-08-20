@@ -1,0 +1,1 @@
+from sentiment_analysis.senti_client import SentiStrength

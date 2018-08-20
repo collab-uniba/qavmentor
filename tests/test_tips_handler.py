@@ -5,7 +5,7 @@ import json
 
 src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/src/utils/"
 sys.path.append(src_code_path)
-from tips_handler import TipsHandler
+from tips import TipsHandler
 
 def test_tips():
 

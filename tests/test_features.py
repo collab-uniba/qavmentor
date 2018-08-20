@@ -4,9 +4,9 @@ import os.path
 import json
 
 
-src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/src/utils/"
+src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir))))+"/src"
 sys.path.append(src_code_path)
-from  feature_analysis import FeatureAnalysis 
+from  question_analysis import FeatureAnalysis 
 
 
 def test_features():

@@ -1,9 +1,9 @@
 from flask import Flask, request
 import json
-from utils.feature_analysis import FeatureAnalysis 
-from utils.tips_handler import TipsHandler
+from question_analysis import FeatureAnalysis
+from tips import TipsHandler
 import requests
-from utils.r_model_predictor import RModelPredictor 
+from predictor import RModelPredictor 
 from flask_cors import CORS
 
 tipsHandler=TipsHandler()
