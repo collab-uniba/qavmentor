@@ -1,7 +1,8 @@
 library("rjson")
 
 #modello <<- readRDS(file="/var/www/qavmentor/R_service/modelloR.RDS")
-modello <<- readRDS(paste(normalizePath(dirname(".")),"modelloR.RDS",sep="/")) #for testing windows
+list.files(path=paste(getwd(),"R_service",sep="/"))
+modello <<- readRDS(paste(normalizePath(dirname(".")),"R_service/modelloR.RDS",sep="/")) #for testing windows
 
 #* @post /model_predict
 model_predict <- function(req) {
