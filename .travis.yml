@@ -11,14 +11,13 @@ addons:
       - oracle-java8-set-default
 install:
 - pip install -r requirements.txt
-- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 script:
+- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 - pytest --cov=./src
-before_install:
-- openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
-  -in .travis/id_rsa.enc -out .travis/id_rsa -d
 after_success:
 - codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
+- openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
+  -in .travis/id_rsa.enc -out .travis/id_rsa -d
 - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then "./.travis/deploy.sh"; fi
 env:
   global:
