@@ -36,12 +36,5 @@ class RModelPredictor:
 		return prediction_scaled_by_reputation
 
 
-
-	def predict_discretized(self):
-		magic_number=self.__maxabsolute_score_possibile-self.__minabsolute_score_possibile
-		prediction_scaled = (self.__prediction*100)/magic_number
-		return prediction_scaled
-
-
 	def predict_raw(self):
 		return (self.__prediction*100)

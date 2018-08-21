@@ -14,11 +14,24 @@
 			"URL":"False",
 			"AvgUpperCharsPPost":0,
 			"UserReputation":"Established"
-		},
-		"out":
-		{
-			"predict_discretized_by_user":0
 		}
 
+	},
+	{
+		"id":2,
+		"in":
+		{
+			"CodeSnippet":"True",
+			"Weekday":"Weekday",
+			"GMTHour":"Afternoon",
+			"BodyLength":"Short",
+			"TitleLength":"Long",
+			"SentimentPositiveScore":"False",
+		    "SentimentNegativeScore":"True",
+			"NTag":"True",
+			"URL":"False",
+			"AvgUpperCharsPPost":0,
+			"UserReputation":"Low"
+		}
 	}
 ]

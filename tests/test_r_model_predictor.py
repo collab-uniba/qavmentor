@@ -14,8 +14,17 @@ def test_predictor():
 	for q in features_questions:
 		print("test index : "+str(q["id"]))
 		req = q["in"]
-		prediction_test=q["out"]
 		predictor = RModelPredictor(req)
-		prediction_result = (predictor.predict_discretized_by_user())
-		assert(prediction_result>prediction_test["predict_discretized_by_user"])
+		prediction_result_discretized_by_user = (predictor.predict_discretized_by_user())
+		prediction_result_predict_raw = (predictor.predict_raw())
+		
+		assert(prediction_result_discretized_by_user>=0)
+		assert(prediction_result_discretized_by_user<=100)
+
+		
+		assert(prediction_result_predict_raw>=0.76)
+		assert(prediction_result_predict_raw<=64.43)
+
+
+
 		print("passed")
