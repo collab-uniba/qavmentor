@@ -1,0 +1,24 @@
+[
+	{
+		"id":1,
+		"in":
+		{
+			"CodeSnippet":"False",
+			"Weekday":"Weekday",
+			"GMTHour":"Afternoon",
+			"BodyLength":"Long",
+			"TitleLength":"Long",
+			"SentimentPositiveScore":"False",
+		    "SentimentNegativeScore":"False",
+			"NTag":"True",
+			"URL":"False",
+			"AvgUpperCharsPPost":0,
+			"UserReputation":"Established"
+		},
+		"out":
+		{
+			"predict_discretized_by_user":0
+		}
+
+	}
+]

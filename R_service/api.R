@@ -7,7 +7,7 @@ modello <<- readRDS(paste(normalizePath(dirname(".")),"modelloR.RDS",sep="/")) #
 model_predict <- function(req) {
   #cat(as.character(Sys.time()), "-", 
    # req$REQUEST_METHOD, req$PATH_INFO, "-", "\n")
-	#json_data <- fromJSON(req$postBody)
+	json_data <- fromJSON(req$postBody)
 
 	#cat("\n",json_data$CodeSnippet
 	#,"\n",json_data$Weekday

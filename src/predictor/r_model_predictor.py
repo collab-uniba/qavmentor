@@ -10,10 +10,17 @@ class RModelPredictor:
 										"Established":{"min":0.02,"max":0.6001},
 										"Trusted":{"min":0.0241,"max":0.6443}}
 
-		self.__data = {"UserReputation": features["UserReputation"], "CodeSnippet": features["CodeSnippet"], "Weekday": features['Weekday'],
-		 "GMTHour": features['GMTHour'], "BodyLength": features['BodyLength'], "TitleLength": features['TitleLength'],
-		  "URL": features['URL'], "AvgUpperCharsPPost": features['AvgUpperCharsPPost'], "SentimentPositiveScore": features['SentimentPositiveScore'],
-		  "SentimentNegativeScore": features['SentimentNegativeScore'], "NTag": features['NTag']}
+		self.__data = {"UserReputation": features["UserReputation"],
+					"CodeSnippet": features["CodeSnippet"],
+					"Weekday": features['Weekday'],
+		 			"GMTHour": features['GMTHour'], 
+		 			"BodyLength": features['BodyLength'],
+		 			"TitleLength": features['TitleLength'],
+		  			"URL": features['URL'],
+		  			"AvgUpperCharsPPost": features['AvgUpperCharsPPost'],
+		  			"SentimentPositiveScore": features['SentimentPositiveScore'],
+		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
+		  			"NTag": features['NTag']}
 		r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(self.__data))
 		self.__prediction = float((r.text).replace("[", "").replace("]", ""))
 
