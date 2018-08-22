@@ -4,11 +4,9 @@
 /lib
 /Lib
 /Scripts
-/.pytest_cache
 /tcl
 /venv
 pip-selfcheck.json
 /tests/.pytest_cache
-find . | \
-  grep -E "(__pycache__|\.pyc$)" | \
-  xargs rm -rf
+**/__pycache__/
+**/.pytest_cache/
