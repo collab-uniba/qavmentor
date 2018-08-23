@@ -5,8 +5,10 @@ from tips import TipsHandler
 import requests
 from predictor import RModelPredictor 
 from flask_cors import CORS
+from info import Explanation
 
-tipsHandler=TipsHandler()
+tips_handler=TipsHandler()
+info_manager=Explanation()
 
 app = Flask(__name__)
 CORS(app)
@@ -50,9 +52,14 @@ def get_tip():
 	json_request=request.get_json()
 	feature_extractor = FeatureAnalysis(json_request)
 	features = feature_extractor.extract_features()
-	tips=tipsHandler.chose_tips(features)
+	tips=tips_handler.chose_tips(features)
 	return json.dumps(tips)
 
+
+@app.route('/getExplanation/<info_key>', methods=['GET'])
+def get_info(info_key):
+	return json.dumps(info_manager.retrive_info(info_key))
+	
 
 if __name__ == '__main__':
 	app.run(ssl_context='adhoc', debug=True)

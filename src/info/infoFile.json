@@ -1,0 +1,14 @@
+{
+	"percentage_improvements":
+		{
+			"title":"titolo",
+		 	"body":"corpo della spiegazione da fornire all'utente"
+		}
+	,
+	"probability_usefull_answer":
+		{
+			"title":"titolo",
+		 	"body":"corpo della spiegazione da fornire all'utente"
+		}
+	
+}
