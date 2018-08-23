@@ -2,28 +2,36 @@
 	{
 		"index":0,
 		"found":false,
-		"category":"actionable",
 		"problem":{"CodeSnippet":"False"},
 		"title":"Provide sample code and data"
 	},
 	{
 		"index":1,
-		"found":false,		
-		"category":"actionable",
-		"problem":{"BodyLength":"Medium","BodyLength":"Long"},
+		"found":false,
+		"problem":{"BodyLength":"Medium"},
 		"title":"Be concise"
 	},
 	{
 		"index":2,
 		"found":false,
-		"category":"actionable",
-		"problem":{"SentimentPositiveScore":"True","SentimentNegativeScore":"True"},
-		"title":"Use a neutral emotional style"
-	},
+		"problem":{"BodyLength":"Long"},
+		"title":"Be concise"
+	},	
 	{
 		"index":3,
 		"found":false,
-		"category":"actionable",
+		"problem":{"SentimentNegativeScore":"True"},
+		"title":"Use a neutral emotional style"
+	},
+	{
+		"index":4,
+		"found":false,
+		"problem":{"SentimentPositiveScore":"True"},
+		"title":"Use a neutral emotional style"
+	},	
+	{
+		"index":5,
+		"found":false,
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"
 	}								

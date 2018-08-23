@@ -10,5 +10,11 @@ from info import Explanation
 def test_Explanation():
 	info_manager=Explanation()
 	info_keys=["percentage_improvements","probability_usefull_answer"]
+	i=0
 	for info in info_keys:
+
+		print("test index : "+str(i))
+		print(info_manager.retrive_info(info))
 		assert(info_manager.retrive_info(info))
+		print("passed")
+		i=i+1
