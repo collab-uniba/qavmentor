@@ -1,6 +1,6 @@
 # qavmentor
 [![Build Status](https://travis-ci.org/collab-uniba/qavmentor.svg?branch=master)](https://travis-ci.org/collab-uniba/qavmentor) [![codecov](https://codecov.io/gh/collab-uniba/qavmentor/branch/master/graph/badge.svg)](https://codecov.io/gh/collab-uniba/qavmentor)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=qavmentor&metric=alert_status
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=qavmentor&metric=code_smells
 )](https://sonarcloud.io/dashboard?id=qavmentor)
 
 
