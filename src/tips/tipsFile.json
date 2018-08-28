@@ -8,29 +8,23 @@
 	{
 		"index":1,
 		"found":false,
-		"problem":{"BodyLength":"Medium"},
+		"problem":{"BodyLength":"Medium","BodyLength":"Long"},
 		"title":"Be concise"
 	},
 	{
 		"index":2,
 		"found":false,
-		"problem":{"BodyLength":"Long"},
-		"title":"Be concise"
-	},	
+		"problem":{"SentimentPositiveScore":"True"},
+		"title":"Use a neutral emotional style"
+	},
 	{
 		"index":3,
 		"found":false,
 		"problem":{"SentimentNegativeScore":"True"},
 		"title":"Use a neutral emotional style"
-	},
-	{
-		"index":4,
-		"found":false,
-		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Use a neutral emotional style"
 	},	
 	{
-		"index":5,
+		"index":4,
 		"found":false,
 		"problem":{"AvgUpperCharsPPostDisc":"High"},
 		"title":"Use capital letters where appropriate"

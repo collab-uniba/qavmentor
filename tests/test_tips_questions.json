@@ -10,7 +10,7 @@
 			"BodyLength":"Long",
 			"TitleLength":"Long",
 			"SentimentPositiveScore":"true",
-			"SentimentNegativeScore":"true",
+			"SentimentNegativeScore":"false",
 			"AvgUpperCharsPPostDisc":"Low",
 			"NTag":"True",
 			"URL":"False",
