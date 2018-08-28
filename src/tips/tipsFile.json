@@ -12,15 +12,9 @@
 		"title":"Be concise"
 	},
 	{
-		"index":2,
-		"found":false,
-		"problem":{"SentimentPositiveScore":"True"},
-		"title":"Use a neutral emotional style"
-	},
-	{
 		"index":3,
 		"found":false,
-		"problem":{"SentimentNegativeScore":"True"},
+		"problem":{"SentimentPositiveScore":"True","SentimentNegativeScore":"True"},
 		"title":"Use a neutral emotional style"
 	},	
 	{
