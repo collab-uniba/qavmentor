@@ -53,7 +53,8 @@ def get_info(info_key):
 
 @app.route('/Rservice', methods=['POST'])
 def get_Rservice():
-	r = requests.post("http://127.0.0.1:1111/model_predict",data=request.get_json())
+	print(json.dumps(request.get_json()))
+	r = requests.post("http://127.0.0.1:1111/model_predict",data=str(json.dumps(request.get_json())))
 	return str(r)
 
 if __name__ == '__main__':
