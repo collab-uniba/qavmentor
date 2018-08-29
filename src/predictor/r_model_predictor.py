@@ -21,10 +21,11 @@ class RModelPredictor:
 		  			"SentimentPositiveScore": features['SentimentPositiveScore'],
 		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
 		  			"NTag": features['NTag']}
-		r = requests.post("https://90.147.75.125:443/Rservice",data=json.dumps(self.__data))
-		print(r)
-		self.__prediction = float(r.json())
-
+		#r = requests.post("https://90.147.75.125/Rservice",data=json.dumps(self.__data))
+		#print(r)
+		#self.__prediction = float(r.json())
+		r = requests.post("http://127.0.0.1:1111/model_predict",data=str(json.dumps(self.__data)))
+		self.__prediction= float((r.text).replace("[", "").replace("]", ""))
 		self.__maxabsolute_score_possibile=0.5849
 		self.__minabsolute_score_possibile=0.0076
 
