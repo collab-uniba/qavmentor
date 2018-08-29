@@ -22,7 +22,7 @@ class RModelPredictor:
 		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
 		  			"NTag": features['NTag']}
 		r = requests.post("https://qavmentor.uniba.it/Rservice",data=json.dumps(self.__data))
-		self.__prediction = float(r.text)
+		self.__prediction = float(r.get_json())
 
 		self.__maxabsolute_score_possibile=0.5849
 		self.__minabsolute_score_possibile=0.0076
