@@ -21,7 +21,7 @@ class RModelPredictor:
 		  			"SentimentPositiveScore": features['SentimentPositiveScore'],
 		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
 		  			"NTag": features['NTag']}
-		r = requests.post("https://qavmentor.uniba.it/Rservice",data=json.dumps(self.__data))
+		r = requests.post("https://90.147.75.125:443/Rservice",data=json.dumps(self.__data))
 		print(r)
 		self.__prediction = float(r.json())
 
