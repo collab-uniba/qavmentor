@@ -54,6 +54,7 @@ def get_info(info_key):
 @app.route('/Rservice', methods=['POST'])
 def get_Rservice():
 	r = requests.post("http://127.0.0.1:1111/model_predict",data=json.dumps(request.get_json()))
-	return r
+	return str(r)
+
 if __name__ == '__main__':
 	app.run(ssl_context='adhoc', debug=True)
