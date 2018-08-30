@@ -6,15 +6,14 @@ import os
 
 
 class RModelPredictor:
-	def __init__(self, features,reputation_file_name="score_by_reputation.json"):
+	def __init__(self, features,config_file="config_file_predictor.json"):
 
-		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+reputation_file_name,"r")
+		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
 		self.__config=json.loads(in_file.read())
 		in_file.close()
 
-		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
-		
 
+		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
 		self.__data = {"UserReputation": features["UserReputation"],
 					"CodeSnippet": features["CodeSnippet"],
 					"Weekday": features['Weekday'],
@@ -26,6 +25,9 @@ class RModelPredictor:
 		  			"SentimentPositiveScore": features['SentimentPositiveScore'],
 		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
 		  			"NTag": features['NTag']}
+		
+
+
 		#r = requests.post("https://90.147.75.125/Rservice",data=json.dumps(self.__data))
 		#print(r)
 		#self.__prediction = float(r.json())
@@ -34,8 +36,8 @@ class RModelPredictor:
 			":"+self.__config["r_port"]+
 			"/"+self.__config["r_api_name"],data=str(json.dumps(self.__data)))
 		self.__prediction= float((r.text).replace("[", "").replace("]", ""))
-		self.__maxabsolute_score_possibile=0.5849
-		self.__minabsolute_score_possibile=0.0076
+		self.__maxabsolute_score_possibile=self.__config["maxabsolute"]
+		self.__minabsolute_score_possibile=self.__config["minabsolute"]
 
 	
 

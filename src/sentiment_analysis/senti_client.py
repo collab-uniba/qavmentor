@@ -5,16 +5,19 @@ import os
 import time
 import sys
 import io
+import json
 
-
-#if not 'SentiStrengthCom.jar' in os.listdir('.'):
-#    pass
 
 class SentiStrength():
-    def __init__(self,language, address='127.0.0.1', port=30000):
+    def __init__(self,language,config_file="config_file_senti.json"):
+        
+        in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
+        self.__config=json.loads(in_file.read())
+        in_file.close()
+
         self.language = language
-        self.port = port 
-        self.address = address
+        self.port = self.__config["port"]
+        self.address = self.__config["address"]
 
     def get_socket(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
