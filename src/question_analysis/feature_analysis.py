@@ -1,10 +1,15 @@
 from sentiment_analysis import SentiStrength
 from question_analysis.post import Post
 import json
+import os
+
 class FeatureAnalysis:
 
-	def __init__(self,request={},debug=False):
-		self.__debug=debug
+	def __init__(self,request={},config_file="config_question_analysis.json"):
+		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
+		self.__config=json.loads(in_file.read())
+		in_file.close()
+
 		if request=={}:
 			raise Exception("Empty body")
 		else:
@@ -53,14 +58,14 @@ class FeatureAnalysis:
 		self.__gmt_hour = self.__get_day_time()
 		#BodyLength
 		self.__body_length = self.__assign_cluster(self.__get_text_length(self.__post.body), 
-															{"Short":[0,90],"Medium":[90,200],"Long":[200,99999999]})
+															self.__config["body_length_clusters"])
 
 		self.__title_length = self.__assign_cluster(self.__get_text_length(self.__post.title), 
-													 		{"Short":[0,6],"Medium":[6,10],"Long":[10,99999999]})
+													 		self.__config["title_length_clusters"])
 		#SentimentScore
-		if not self.__debug:		
-			senti_scores=SentiStrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
-			self.__sentiment_positive_score,self.__sentiment_negative_score= self.__get_sentiment_scores(senti_scores)
+		senti_scores=SentiStrength('EN').get_sentiment(self.__post.title +" "+self.__post.body)
+		self.__sentiment_positive_score,self.__sentiment_negative_score= self.__get_sentiment_scores(senti_scores)
+		
 		#Ntag
 		if len(self.__post.tags) > 1:
 			self.__n_tag = True
@@ -69,19 +74,13 @@ class FeatureAnalysis:
 															self.__get_uppercase_ratio(self.__post.title))/2),
 															)
 		#AvgUpperCharsPPost cluster
-		self.__avg_upperchars_ppost_disc= self.__assign_cluster(float(self.__avg_upperchars_ppost),{"Low":[0,0.10],"High":[0.10,1]})
+		self.__avg_upperchars_ppost_disc= self.__assign_cluster(float(self.__avg_upperchars_ppost),self.__config["uppercase_clusters"])
 
 		#URL
 		if len(self.__post.url) > 0:
 			self.__url= True
 
-		self.__user_reputation = self.__assign_cluster(self.__post.reputation, 
-								{
-								 "New":[0,10], 
-								 "Low":[10,1000], 
-								 "Established":[1000,20000],
-								 "Trusted":[20000,99999999]
-								})	
+		self.__user_reputation = self.__assign_cluster(self.__post.reputation, self.__config["reputation_clusters"])	
 
 
 	def __is_weekend(self):
