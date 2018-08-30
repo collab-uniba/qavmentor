@@ -2,7 +2,6 @@ import time
 import subprocess
 import requests
 import json
-import yaml
 import os
 
 
@@ -10,13 +9,11 @@ class RModelPredictor:
 	def __init__(self, features,reputation_file_name="score_by_reputation.json"):
 
 		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+reputation_file_name,"r")
-		self.__score=json.loads(in_file.read())
+		self.__config=json.loads(in_file.read())
 		in_file.close()
 
-		self.__maxscore_by_reputation = {"New":{"min":0.0076,"max":0.3543},
-										"Low":{"min":0.018,"max":0.5733},
-										"Established":{"min":0.02,"max":0.6001},
-										"Trusted":{"min":0.0241,"max":0.6443}}
+		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
+		
 
 		self.__data = {"UserReputation": features["UserReputation"],
 					"CodeSnippet": features["CodeSnippet"],
@@ -32,7 +29,10 @@ class RModelPredictor:
 		#r = requests.post("https://90.147.75.125/Rservice",data=json.dumps(self.__data))
 		#print(r)
 		#self.__prediction = float(r.json())
-		r = requests.post("http://127.0.0.1:1111/model_predict",data=str(json.dumps(self.__data)))
+		r = requests.post(
+			"http://"+self.__config["r_ip"]+
+			":"+self.__config["r_port"]+
+			"/"+self.__config["r_api_name"],data=str(json.dumps(self.__data)))
 		self.__prediction= float((r.text).replace("[", "").replace("]", ""))
 		self.__maxabsolute_score_possibile=0.5849
 		self.__minabsolute_score_possibile=0.0076
