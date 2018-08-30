@@ -2,9 +2,17 @@ import time
 import subprocess
 import requests
 import json
+import yaml
+import os
+
 
 class RModelPredictor:
-	def __init__(self, features):
+	def __init__(self, features,reputation_file_name="score_by_reputation.json"):
+
+		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+reputation_file_name,"r")
+		self.__score=json.loads(in_file.read())
+		in_file.close()
+
 		self.__maxscore_by_reputation = {"New":{"min":0.0076,"max":0.3543},
 										"Low":{"min":0.018,"max":0.5733},
 										"Established":{"min":0.02,"max":0.6001},
