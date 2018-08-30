@@ -1,0 +1,23 @@
+{
+	"maxscore_by_reputation": {
+		"New": {
+			"min": 0.0076,
+			"max": 0.3543
+		},
+		"Low": {
+			"min": 0.018,
+			"max": 0.5733
+		},
+		"Established": {
+			"min": 0.02,
+			"max": 0.6001
+		},
+		"Trusted": {
+			"min": 0.0241,
+			"max": 0.6443
+		}
+	},
+	"r_ip": "127.0.0.1",
+	"r_port": "1111",
+	"r_api_name": "model_predict"
+}
