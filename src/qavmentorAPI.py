@@ -16,7 +16,7 @@ CORS(app)
 
 
 @app.route('/getPrediction/<prediction_type>', methods=['POST'])
-def get_prediction_raw(prediction_type):
+def get_prediction(prediction_type):
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extract_features()
 	predictor = RModelPredictor(features)
