@@ -14,26 +14,17 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/')
-def root():
-	return('It Works!')
 
-
-@app.route('/getPredictionRaw', methods=['POST'])
-def get_prediction_raw():
+@app.route('/getPrediction/<prediction_type>', methods=['POST'])
+def get_prediction_raw(prediction_type):
 	feature_extractor = FeatureAnalysis(request.get_json())
 	features = feature_extractor.extract_features()
 	predictor = RModelPredictor(features)
-	prediction = (predictor.predict_raw())
-	return json.dumps({"prediction": prediction})
-
-
-@app.route('/getPredictionDiscretizedByUser', methods=['POST'])
-def get_prediction_discretized_by_user():
-	feature_extractor = FeatureAnalysis(request.get_json())
-	features = feature_extractor.extract_features()
-	predictor = RModelPredictor(features)
-	prediction = (predictor.predict_discretized_by_user())
+	prediction = 0
+	if prediction_type=='raw':
+		prediction = (predictor.predict_raw())
+	elif prediction_type=='discretized':
+		prediction = (predictor.predict_discretized())
 	return json.dumps({"prediction": prediction})
 
 

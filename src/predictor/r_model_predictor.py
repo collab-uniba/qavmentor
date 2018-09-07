@@ -41,7 +41,7 @@ class RModelPredictor:
 
 	
 
-	def predict_discretized_by_user(self):
+	def predict_discretized(self):
 		reputation=self.__data["UserReputation"]
 		magic_number=self.__maxscore_by_reputation[reputation]["max"]-self.__maxscore_by_reputation[reputation]["min"]
 		prediction_scaled_by_reputation = (self.__prediction*100)/magic_number
