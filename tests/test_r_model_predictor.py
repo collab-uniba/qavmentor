@@ -15,7 +15,7 @@ def test_predictor():
 		print("test index : "+str(q["id"]))
 		req = q["in"]
 		predictor = RModelPredictor(req)
-		prediction_result_discretized_by_user = (predictor.predict_discretized_by_user())
+		prediction_result_discretized_by_user = (predictor.predict_discretized())
 		prediction_result_predict_raw = (predictor.predict_raw())
 		
 		assert(prediction_result_discretized_by_user>=0)
@@ -24,7 +24,5 @@ def test_predictor():
 		
 		assert(prediction_result_predict_raw>=0.76)
 		assert(prediction_result_predict_raw<=64.43)
-
-
 
 		print("passed")
