@@ -22,9 +22,10 @@ def test_get_prediction_raw(client):
 		print("test index : "+str(q["id"]))
 		req = q["in"]
 		#print(req)
-		rv = client.post('/getPredictionRaw', json=(req))
+		rv = client.post('/getPrediction/raw', json=(req))
 		data = json.loads((rv.data).decode())
 		assert(float(data["prediction"])>=0.76 and float(data["prediction"])<=64.43)
+
 
 
 def test_get_prediction_discretized_by_user(client):
@@ -34,7 +35,7 @@ def test_get_prediction_discretized_by_user(client):
 	for q in questions:
 		print("test index : "+str(q["id"]))
 		req = q["in"]
-		rv = client.post('/getPredictionDiscretizedByUser', json=(req))
+		rv = client.post('/getPrediction/discretized', json=(req))
 		data = json.loads((rv.data).decode())
 		assert(float(data["prediction"])>=0 and float(data["prediction"])<=100)
 
