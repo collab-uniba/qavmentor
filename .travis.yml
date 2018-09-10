@@ -11,16 +11,12 @@ addons:
       - oracle-java8-set-default
 install:
 - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-#- sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu trusty-cran35/'
-#- sudo apt update
-#- sudo apt install r-base
-#- R --version
-#- sudo Rscript ./R_service/install_dependencies.R
 - pip install -r requirements.txt
 script:
 - /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 - Rscript ./R_service/server.R &
 - pytest --cov=./src
+- sonar-scanner
 after_success:
 - codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
 - openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
