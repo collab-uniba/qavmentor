@@ -14,7 +14,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-
 @app.route('/getPrediction/<prediction_type>', methods=['POST'])
 def get_prediction(prediction_type):
 	feature_extractor = FeatureAnalysis(request.get_json())
@@ -48,6 +47,7 @@ def get_Rservice():
 	r = requests.post("http://127.0.0.1:1111/model_predict",data=str(json.dumps(request.get_json())))
 	prediction= float((r.text).replace("[", "").replace("]", ""))
 	return json.dumps(prediction)
+
 
 if __name__ == '__main__':
 	app.run(ssl_context='adhoc', debug=True)

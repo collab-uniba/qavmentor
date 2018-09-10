@@ -28,16 +28,18 @@ class RModelPredictor:
 		
 
 
-		#r = requests.post("https://90.147.75.125/Rservice",data=json.dumps(self.__data))
-		#print(r)
-		#self.__prediction = float(r.json())
+		headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
+		r = requests.post("https://localhost:5000/Rservice", 
+							headers=headers, 
+							data=json.dumps(self.__data))
+		self.__prediction = float(r.json())
+		'''
 		r = requests.post(
 			"http://"+self.__config["r_ip"]+
 			":"+self.__config["r_port"]+
 			"/"+self.__config["r_api_name"],data=str(json.dumps(self.__data)))
-		self.__prediction= float((r.text).replace("[", "").replace("]", ""))
-		self.__maxabsolute_score_possibile=self.__config["maxabsolute"]
-		self.__minabsolute_score_possibile=self.__config["minabsolute"]
+		'''
+		#self.__prediction= float((r.text).replace("[", "").replace("]", ""))
 
 	
 
