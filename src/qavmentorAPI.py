@@ -7,8 +7,8 @@ from predictor import RModelPredictor
 from flask_cors import CORS
 from info import Explanation
 
-tips_handler=TipsHandler()
-info_manager=Explanation()
+tips_handler = TipsHandler()
+info_manager = Explanation()
 
 config_file = "config_file_api.json" 
 in_file = open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
