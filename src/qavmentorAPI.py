@@ -10,9 +10,15 @@ from info import Explanation
 tips_handler=TipsHandler()
 info_manager=Explanation()
 
+config_file = "config_file_api.json" 
+in_file = open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
+config = json.loads(in_file.read())
+in_file.close()
+
 app = Flask(__name__)
 CORS(app)
 
+r_service = config['local_r_service']
 
 @app.route('/getPrediction/<prediction_type>', methods=['POST'])
 def get_prediction(prediction_type):
@@ -42,9 +48,8 @@ def get_info(info_key):
 	
 
 @app.route('/Rservice', methods=['POST'])
-def get_Rservice():
-	#print(json.dumps(request.get_json()))
-	r = requests.post("http://127.0.0.1:1111/model_predict",data=str(json.dumps(request.get_json())))
+def get_r_service():
+	r = requests.post("http://127.0.0.1:1111/model_predict",data=request.get_json())
 	prediction= float((r.text).replace("[", "").replace("]", ""))
 	return json.dumps(prediction)
 

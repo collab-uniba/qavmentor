@@ -29,17 +29,10 @@ class RModelPredictor:
 
 
 		headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-		r = requests.post("https://qavmentor.uniba.it/Rservice", 
+		r = requests.post(self.__config["r_api_name"], 
 							headers=headers, 
 							data=json.dumps(self.__data))
 		self.__prediction = float(r.json())
-		'''
-		r = requests.post(
-			"http://"+self.__config["r_ip"]+
-			":"+self.__config["r_port"]+
-			"/"+self.__config["r_api_name"],data=str(json.dumps(self.__data)))
-		'''
-		#self.__prediction= float((r.text).replace("[", "").replace("]", ""))
 
 	
 

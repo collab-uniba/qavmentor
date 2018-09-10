@@ -17,7 +17,6 @@
 			"max": 0.6443
 		}
 	},
-	"r_ip": "127.0.0.1",
-	"r_port": "1111",
-	"r_api_name": "model_predict"
+
+	"r_api_name": "https://qavmentor.uniba.it/Rservice"
 }

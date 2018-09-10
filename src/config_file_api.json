@@ -1,0 +1,3 @@
+{
+	"local_r_service": "http://127.0.0.1:1111/model_predict"
+}

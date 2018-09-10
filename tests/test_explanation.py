@@ -7,7 +7,7 @@ src_code_path = str(os.path.dirname(os.path.abspath(os.path.join(__file__, os.pa
 sys.path.append(src_code_path)
 from info import Explanation
 
-def test_Explanation():
+def test_explanation():
 	info_manager=Explanation()
 	info_keys=["percentage_improvements","probability_usefull_answer"]
 	i=0
