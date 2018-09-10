@@ -9,11 +9,16 @@ addons:
   apt:
     packages:
       - oracle-java8-set-default
+
 install:
 - pip install -r requirements.txt
-script:
+
+before_script:
 - /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
+
+script:
 - pytest --cov=./src
+
 after_success:
 - codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
 - sonar-scanner
@@ -21,6 +26,7 @@ after_success:
 - openssl aes-256-cbc -K $encrypted_c7c730bf9b63_key -iv $encrypted_c7c730bf9b63_iv
   -in .travis/id_rsa.enc -out .travis/id_rsa -d
 - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then "./.travis/deploy.sh"; fi
+
 env:
   global:
   - secure: jZfiAA3suPxT6yGmWAP45bhkRGc3ERFZatUdOLd6aKbD7tZOZv6OWgDCjZYXqgFknk3vnWoZfdcEWjlZ72d76JQvci6P8cmQLR/0PFdyz7b1kv04Ljft8vFs02lU9TiN/3kcqOgyWgT4ZBkOYbP1hvz6wSFgBFJyWyqQ3uYDqtEwfVtoRaagZUqy7l5r0wF827dfL2Av04D8at/VpN5WcyOR6XkpBT89CopQSVDLt9wiMeRgFrOXJqWatSg68vq3FIrC+PZYbemhIC5d+N671UBcDFEhRek3PXzuYuECa3OP8zIlYHTxsMHb27ncVtXKerIvx6WXYWgL9LnI7F3Dw34ugmkYbSViuQ4Q7Z3VRMnclKXRLbKBlbPE5Yow66dk2DMDnN1gdWW75EvjeqEQ2/XMAQqXRWnPAI2sjcAKhHYvxxJ0c7s9ckLvcQzYShDyMQ2egdsVJzmkI9k/MufvKjeNxPlqXhzamSHuWMO89nQWXf2J1zlRCBV3/dryqURAAyM/BMv6TNe2i+wRQlYffxmhlPQy2UUagQOyN/pyN4uxrZWij1r37kTQBfRgM7wrxcEBrOpkJJEPz/fjknNHzrezyV3MYVUyEAmszO/T5qZHxz6F2RudZ50dJ0fMs1x7E6SCdxxCYbDHq7/84WEoHoZd8DRZr9L6O5z4OUZxRDk=
