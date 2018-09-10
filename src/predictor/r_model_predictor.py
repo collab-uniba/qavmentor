@@ -29,7 +29,7 @@ class RModelPredictor:
 
 
 		headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-		r = requests.post("https://localhost:5000/Rservice", 
+		r = requests.post("https://qavmentor.uniba.it/Rservice", 
 							headers=headers, 
 							data=json.dumps(self.__data))
 		self.__prediction = float(r.json())
