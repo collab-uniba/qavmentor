@@ -12,9 +12,9 @@ addons:
 
 install:
 - pip install -r requirements.txt
-- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 
 script:
+- /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 #- pytest --cov=./src
 
 after_success:
