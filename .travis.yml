@@ -14,8 +14,8 @@ install:
 - pip install -r requirements.txt
 - /usr/lib/jvm/java-8-oracle/jre/bin/java -Xmx1G -Xss32m -jar ./SentiStrength/SentiStrengthCom.jar sentidata ./SentiStrength/EnglishSentimentDictionary/ listen 30000 &
 
-script:
-- pytest --cov=./src
+#script:
+#- pytest --cov=./src
 
 after_success:
 - codecov --token=998994d9-6e62-44c2-81ee-4b7d79d9b479
