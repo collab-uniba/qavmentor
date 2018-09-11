@@ -6,6 +6,7 @@ import requests
 from predictor import RModelPredictor 
 from flask_cors import CORS
 from info import Explanation
+import os
 
 tips_handler = TipsHandler()
 info_manager = Explanation()
