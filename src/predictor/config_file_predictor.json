@@ -1,20 +1,20 @@
 {
 	"maxscore_by_reputation": {
 		"New": {
-			"min": 0.0076,
-			"max": 0.3543
+			"min": 0.0088,
+			"max": 0.3281
 		},
 		"Low": {
-			"min": 0.018,
-			"max": 0.5733
+			"min": 0.0208,
+			"max": 0.5392
 		},
 		"Established": {
-			"min": 0.02,
-			"max": 0.6001
+			"min": 0.0232,
+			"max": 0.5665
 		},
 		"Trusted": {
-			"min": 0.0241,
-			"max": 0.6443
+			"min": 0.0279,
+			"max": 0.6121
 		}
 	},
 
