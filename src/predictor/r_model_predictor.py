@@ -27,21 +27,26 @@ class RModelPredictor:
 		  			"NTag": features['NTag']}
 		
 
-
+	def __predict(data):
 		headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
 		r = requests.post(self.__config["r_api_name"], 
 							headers=headers, 
-							data=json.dumps(self.__data))
-		self.__prediction = float(r.json())
+							data=json.dumps(data))
+		prediction = float(r.json())
+		return prediction
 
 	
 
 	def predict_discretized(self):
+		#stabilizing output percentage
+		self.__data["Weekday"] = "Weekend"
+		self.__data["GMTHour"] = "Evening"
+
 		reputation=self.__data["UserReputation"]
 		magic_number=self.__maxscore_by_reputation[reputation]["max"]-self.__maxscore_by_reputation[reputation]["min"]
-		prediction_scaled_by_reputation = (self.__prediction*100)/magic_number
+		prediction_scaled_by_reputation = (self.__predict(self.__data)*100)/magic_number
 		return prediction_scaled_by_reputation
 
 
 	def predict_raw(self):
-		return (self.__prediction*100)
+		return (self.__predict(self.__data)*100)
