@@ -19,8 +19,6 @@ in_file.close()
 app = Flask(__name__)
 CORS(app)
 
-r_service = config['local_r_service']
-
 @app.route('/getPrediction/<prediction_type>', methods=['POST'])
 def get_prediction(prediction_type):
 	feature_extractor = FeatureAnalysis(request.get_json())
@@ -50,7 +48,7 @@ def get_info(info_key):
 
 @app.route('/Rservice', methods=['POST'])
 def get_r_service():
-	r = requests.post("http://localhost:1111/model_predict", data=json.dumps(request.get_json()))
+	r = requests.post(str(config['local_r_service']), data=json.dumps(request.get_json()))
 	prediction= float((r.text).replace("[", "").replace("]", ""))
 	return json.dumps(prediction)
 
