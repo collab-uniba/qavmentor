@@ -27,7 +27,7 @@ class RModelPredictor:
 		  			"NTag": features['NTag']}
 		
 
-	def __predict(data):
+	def __predict(self, data):
 		headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
 		r = requests.post(self.__config["r_api_name"], 
 							headers=headers, 
