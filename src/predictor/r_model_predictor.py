@@ -44,8 +44,8 @@ class RModelPredictor:
 
 		reputation=self.__data["UserReputation"]
 		magic_number=self.__maxscore_by_reputation[reputation]["max"]-self.__maxscore_by_reputation[reputation]["min"]
-		prediction_scaled_by_reputation = (self.__predict(self.__data)*100)/magic_number
-		return prediction_scaled_by_reputation
+		prediction_scaled_by_reputation = (self.__predict(self.__data)-self.__maxscore_by_reputation[reputation]["min"])/magic_number
+		return (prediction_scaled_by_reputation*100)
 
 
 	def predict_raw(self):
