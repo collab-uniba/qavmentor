@@ -14,7 +14,7 @@ class RModelPredictor:
 
 		upperCaseValue = 0
 
-		if self.__data["AvgUpperCharsPPostDisc"] == "High":
+		if features["AvgUpperCharsPPostDisc"] == "High":
 			upperCaseValue = 1
 
 		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
