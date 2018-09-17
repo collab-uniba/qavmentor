@@ -12,6 +12,10 @@ class RModelPredictor:
 		self.__config=json.loads(in_file.read())
 		in_file.close()
 
+		upperCaseValue = 0
+
+		if self.__data["AvgUpperCharsPPostDisc"] == "High":
+			upperCaseValue = 1
 
 		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
 		self.__data = {"UserReputation": features["UserReputation"],
@@ -21,7 +25,7 @@ class RModelPredictor:
 		 			"BodyLength": features['BodyLength'],
 		 			"TitleLength": features['TitleLength'],
 		  			"URL": features['URL'],
-		  			"AvgUpperCharsPPost": features['AvgUpperCharsPPost'],
+		  			"AvgUpperCharsPPost": upperCaseValue,
 		  			"SentimentPositiveScore": features['SentimentPositiveScore'],
 		  			"SentimentNegativeScore": features['SentimentNegativeScore'],
 		  			"NTag": features['NTag']}
