@@ -15,7 +15,7 @@ class RModelPredictor:
 		upperCaseValue = 0
 
 		if float(features['AvgUpperCharsPPost']) > 0.10:
-			upperCaseValue = 1
+			upperCaseValue = features['AvgUpperCharsPPost']
 
 		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
 		self.__data = {"UserReputation": features["UserReputation"],
