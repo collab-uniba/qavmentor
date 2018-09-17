@@ -6,7 +6,7 @@ import os
 
 
 class RModelPredictor:
-	def __init__(self, features,config_file="config_file_predictor.json"):
+	def __init__(self, features, config_file="config_file_predictor.json"):
 
 		in_file=open(os.path.dirname(os.path.abspath(__file__))+'/'+config_file,"r")
 		self.__config=json.loads(in_file.read())
@@ -14,7 +14,7 @@ class RModelPredictor:
 
 		upperCaseValue = 0
 
-		if features["AvgUpperCharsPPostDisc"] == "High":
+		if float(features['AvgUpperCharsPPost']) > 0.10:
 			upperCaseValue = 1
 
 		self.__maxscore_by_reputation=self.__config["maxscore_by_reputation"]
