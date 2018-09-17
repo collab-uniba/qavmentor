@@ -2,7 +2,7 @@
 	"percentage_improvements":
 		{
 			"title":"Improve your question",
-		 	"body":"Follow our guidelines for effective question writing. Our evidence-based netiquette also includes empirically validated guidelines from the SO code of conduct.  For more information about the study, please refer to our paper: F. Calefato, F. Lanubile, N. Novielli. <a href="">\"How to Ask for Technical Help? Evidence-based Guidelines for Writing Questions on Stack Overflow\"</a>. Information and Software Technology, 2017."
+		 	"body":"Follow our guidelines for effective question writing. Our evidence-based netiquette also includes empirically validated guidelines from the SO code of conduct.  For more information about the study, please refer to our paper: F. Calefato, F. Lanubile, N. Novielli. <a>\"How to Ask for Technical Help? Evidence-based Guidelines for Writing Questions on Stack Overflow\"</a>. Information and Software Technology, 2017."
 		}
 	,
 	"probability_usefull_answer":
