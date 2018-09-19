@@ -114,7 +114,7 @@ class FeatureAnalysis:
 
 
 	def __get_text_length(self,text):
-		return len(text)
+		return len(text.replace(" ", ""))
 	
 
 	def __get_sentiment_scores(self,scores):
