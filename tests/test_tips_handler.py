@@ -17,6 +17,6 @@ def test_tips():
 
 	for test in features:
 		print("test index : "+str(test["id"]))
-		tips=tips_handler.chose_tips(test["in"])
+		tips=tips_handler.get_tips(test["in"])
 		assert(len(tips)!=0)
 		print("passed")
