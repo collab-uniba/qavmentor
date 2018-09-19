@@ -44,7 +44,10 @@ class RModelPredictor:
 	def predict_discretized(self):
 		#stabilizing output percentage
 		self.__data["Weekday"] = "Weekend"
-		self.__data["GMTHour"] = "Evening"
+		self.__data["GMTHour"] = "Evening"		
+		self.__data["TitleLength"] = "Long"
+		self.__data["NTag"] = "False"
+		self.__data["URL"] = "False"
 
 		reputation=self.__data["UserReputation"]
 		magic_number=self.__maxscore_by_reputation[reputation]["max"]-self.__maxscore_by_reputation[reputation]["min"]

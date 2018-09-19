@@ -10,7 +10,7 @@ class TipsHandler:
 	
 
 
-	def chose_tips(self,features):
+	def get_tips(self,features):
 		client_tips=[]
 
 		client_tips=copy.deepcopy(self.__tips)
