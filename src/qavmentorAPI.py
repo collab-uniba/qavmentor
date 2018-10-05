@@ -58,32 +58,29 @@ def get_r_service():
 
 @app.route('/savePost', methods=['POST'])
 def save_post():
-	question = {}
+	post = {}
+	req = request.get_json()
+	for key, value in req.items():
+		post[key] = value
+	feature_extractor = FeatureAnalysis(req)
+	features = feature_extractor.extract_features()
+	predictor = RModelPredictor(features)
+	tips = tips_handler.get_tips(features)
+
+	post["features"] = str(features)
+	post["prediction_raw"] = (predictor.predict_raw())
+	post["prediction_discretized"] = (predictor.predict_discretized())
+	post["tips"]=str(tips)
+
+	df = pd.DataFrame.from_dict(post, orient='columns')
 	
-	post = request.get_json()
-	question["post"] = post
-
-	feature_extractor = FeatureAnalysis(post)
-	question["features"] = feature_extractor.extract_features()
-	predictor = RModelPredictor(question["features"])
-	question["prediction_raw"] = (predictor.predict_raw())
-	question["prediction_discretized"] = (predictor.predict_discretized())
-
-	question["tips"]=tips_handler.get_tips(question["features"])
-
-	posts = []
-
+	column_header = False
 	if not os.path.isfile(config['postedQ']):
-		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'],"w+") as f:
-			json.dump(posts, f)
-
-	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "r+") as f:
-			posts = json.load(f)
-
-	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "w") as f:
-		posts.append(post) 
-		json.dump(question, f)
-	return json.dumps({'saved':posts})
+		column_header = True 
+	with open(config['postedQ'], 'a') as f:
+  		df.to_csv(f, header=column_header, index=False)
+	
+	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
 
