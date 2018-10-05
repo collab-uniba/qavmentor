@@ -6,7 +6,10 @@ import requests
 from predictor import RModelPredictor 
 from flask_cors import CORS
 from info import Explanation
+
+import pandas as pd
 import os
+
 
 tips_handler = TipsHandler()
 info_manager = Explanation()
@@ -51,6 +54,25 @@ def get_r_service():
 	r = requests.post(str(config['local_r_service']), data=json.dumps(request.get_json()))
 	prediction= float((r.text).replace("[", "").replace("]", ""))
 	return json.dumps(prediction)
+
+
+@app.route('/savePost', methods=['POST'])
+def save_post():
+	post = request.get_json()
+
+	posts = []
+	if not os.path.isfile(config['postedQ']):
+		with open (config['postedQ'], "w+") as f:
+			json.dump(posts, f)
+
+	with open (config['postedQ'], "r+") as f:
+			posts = json.load(f)
+
+	with open (config['postedQ'], "w") as f:
+		posts.append(post) 
+		json.dump(posts, f)
+	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
 
 
 if __name__ == '__main__':
