@@ -83,7 +83,7 @@ def save_post():
 	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "w") as f:
 		posts.append(post) 
 		json.dump(question, f)
-	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+	return json.dumps({'success':True, 'saved':posts}), 200, {'ContentType':'application/json'}
 
 
 
