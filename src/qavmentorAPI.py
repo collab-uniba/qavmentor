@@ -77,9 +77,9 @@ def save_post():
 	column_header = False
 	if not os.path.isfile(config['postedQ']):
 		column_header = True 
-	with open(config['postedQ'], 'a') as f:
+	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
   		df.to_csv(f, header=column_header, index=False)
-	
+
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
