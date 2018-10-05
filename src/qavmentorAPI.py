@@ -73,7 +73,7 @@ def save_post():
 
 	posts = []
 
-	os.chmod(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 777)
+	os.chmod('./'+config['postedQ'], 777)
 	if not os.path.isfile(config['postedQ']):
 		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'],"w+") as f:
 			json.dump(posts, f)
