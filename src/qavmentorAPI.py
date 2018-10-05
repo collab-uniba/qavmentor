@@ -58,7 +58,19 @@ def get_r_service():
 
 @app.route('/savePost', methods=['POST'])
 def save_post():
+	question = {}
+
 	post = request.get_json()
+
+	question["post"] = post
+
+	feature_extractor = FeatureAnalysis(post)
+	question["features"] = feature_extractor.extract_features()
+	predictor = RModelPredictor(question["features"])
+	question["prediction_raw"] = (predictor.predict_raw())
+	question["prediction_discretized"] = (predictor.predict_discretized())
+
+	question["tips"]=tips_handler.get_tips(question["features"])
 
 	posts = []
 	if not os.path.isfile(config['postedQ']):
@@ -70,7 +82,7 @@ def save_post():
 
 	with open (config['postedQ'], "w") as f:
 		posts.append(post) 
-		json.dump(posts, f)
+		json.dump(question, f)
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
