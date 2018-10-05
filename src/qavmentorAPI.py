@@ -72,9 +72,10 @@ def save_post():
 	question["tips"]=tips_handler.get_tips(question["features"])
 
 	posts = []
+
+	os.chmod(config['postedQ'], 777)
 	if not os.path.isfile(config['postedQ']):
 		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'],"w+") as f:
-			os.chmod(config['postedQ'], 777)
 			json.dump(posts, f)
 
 	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "r+") as f:
