@@ -59,9 +59,8 @@ def get_r_service():
 @app.route('/savePost', methods=['POST'])
 def save_post():
 	question = {}
-
+	
 	post = request.get_json()
-
 	question["post"] = post
 
 	feature_extractor = FeatureAnalysis(post)
