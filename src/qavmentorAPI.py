@@ -74,14 +74,14 @@ def save_post():
 
 	posts = []
 	if not os.path.isfile(config['postedQ']):
-		with open (config['postedQ'], "w+") as f:
+		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'],"w+") as f:
 			os.chmod(config['postedQ'], 777)
 			json.dump(posts, f)
 
-	with open (config['postedQ'], "r+") as f:
+	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "r+") as f:
 			posts = json.load(f)
 
-	with open (config['postedQ'], "w") as f:
+	with open (os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], "w") as f:
 		posts.append(post) 
 		json.dump(question, f)
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
