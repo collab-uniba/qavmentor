@@ -60,8 +60,16 @@ def get_r_service():
 def save_post():
 	post = {}
 	req = request.get_json()
-	for key, value in req.items():
-		post[key] = value
+	
+	post["title"] = req["title"]
+	post["body"] = req["body"]
+	post["tags"] = str(req["tags"])
+	post["hour"] = str(req["hour"])
+	post["day"] = str(req["day"])
+	post["reputation"] = str(req["reputation"])
+	post["user_id"] = str(req["user_id"])
+
+
 	feature_extractor = FeatureAnalysis(req)
 	features = feature_extractor.extract_features()
 	predictor = RModelPredictor(features)
@@ -72,13 +80,18 @@ def save_post():
 	post["prediction_discretized"] = (predictor.predict_discretized())
 	post["tips"]=str(tips)
 
-	df = pd.DataFrame.from_dict(post, orient='columns')
+	df = pd.DataFrame({"title":[post["title"]],"body":[post["body"]],"tags":[post["tags"]],
+						"hour":[post["hour"]], "day":[post["day"]],"reputation":[post["reputation"]],
+						"user_id":[post["user_id"]],"features":[post["features"]], 
+						"prediction_raw":[post["prediction_raw"]], 
+						"prediction_discretized":[post["prediction_discretized"]],
+						"tips":[post["tips"]]})
 	
 	column_header = False
 	if not os.path.isfile(config['postedQ']):
 		column_header = True 
 	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
-  		df.to_csv(f, header=column_header, index=False)
+  		df.to_csv(f, header=column_header, index=True)
 
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
