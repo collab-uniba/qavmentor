@@ -91,7 +91,7 @@ def save_post():
 	if not os.path.isfile(config['postedQ']):
 		column_header = True 
 	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
-  		df.to_csv(f, header=column_header, index=False)
+  		df.to_csv(f, header=False, index=False)
 
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
