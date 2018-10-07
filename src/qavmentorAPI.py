@@ -89,12 +89,8 @@ def save_post():
 	
 	if not os.path.isfile(config['postedQ']):
 		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
-			header = pd.DataFrame({"title":"title","body":"body","tags":"tags",
-						"hour":"hour", "day":"day","reputation":"reputation",
-						"user_id":"user_id","features":"features", 
-						"prediction_raw":"prediction_raw", 
-						"prediction_discretized":"prediction_discretized",
-						"tips":"tips"})
+			header = pd.DataFrame([["title","body","tags","hour", "day","reputation","user_id","features", 
+						"prediction_raw", "prediction_discretized",	"tips"]])
 			header.to_csv(f, header=False, index=False)
 		 
 	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:			

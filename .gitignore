@@ -6,6 +6,8 @@
 /Scripts
 /tcl
 /venv
+/src/posted_question.json
+/src/posted_question.csv
 pip-selfcheck.json
 /tests/.pytest_cache
 **/__pycache__/
