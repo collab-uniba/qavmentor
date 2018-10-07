@@ -87,10 +87,16 @@ def save_post():
 						"prediction_discretized":[post["prediction_discretized"]],
 						"tips":[post["tips"]]})
 	
-	column_header = False
-	if not os.path.isfile(config['postedQ']):
-		column_header = True 
+		 
 	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
+		if not os.path.isfile(config['postedQ']):
+			header = pd.DataFrame({"title":"title","body":"body","tags":"tags",
+						"hour":"hour", "day":"day","reputation":"reputation",
+						"user_id":"user_id","features":"features", 
+						"prediction_raw":"prediction_raw", 
+						"prediction_discretized":"prediction_discretized",
+						"tips":"tips"})
+			header.to_csv(f, header=False, index=False)
   		df.to_csv(f, header=False, index=False)
 
 	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
