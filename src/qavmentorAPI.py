@@ -80,13 +80,14 @@ def save_post():
 	post["prediction_discretized"] = (predictor.predict_discretized())
 	post["tips"]=str(tips)
 
-	df = pd.DataFrame([post["title"],post["body"],post["tags"],
-						post["hour"], post["day"],post["reputation"],
-						post["user_id"],post["features"], 
-						post["prediction_raw"], post["prediction_discretized"],
-						post["tips"]])
+	df = pd.DataFrame({"title":[post["title"]],"body":[post["body"]],"tags":[post["tags"]],
+						"hour":[post["hour"]], "day":[post["day"]],"reputation":[post["reputation"]],
+						"user_id":[post["user_id"]],"features":[post["features"]], 
+						"prediction_raw":[post["prediction_raw"]], 
+						"prediction_discretized":[post["prediction_discretized"]],
+						"tips":[post["tips"]]})
 	
-	if not os.path.isfile(config['postedQ']):
+	if not os.path.isfile(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ']):
 		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
 			header = pd.DataFrame([["title","body","tags","hour", "day","reputation","user_id","features", 
 						"prediction_raw", "prediction_discretized",	"tips"]])
