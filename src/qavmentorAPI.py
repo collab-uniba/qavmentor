@@ -61,14 +61,14 @@ def save_post():
 	post = {}
 	req = request.get_json()
 	
-	post["title"] = req["title"]
-	post["body"] = req["body"]
-	post["tags"] = str(req["tags"])
-	post["hour"] = str(req["hour"])
-	post["day"] = str(req["day"])
-	post["reputation"] = str(req["reputation"])
-	post["user_id"] = str(req["user_id"])
-	post["question_id"] = str(req["question_id"])
+	post["title"] = req["title"].encode()
+	post["body"] = req["body"].encode()
+	post["tags"] = str(req["tags"]).encode()
+	post["hour"] = str(req["hour"]).encode()
+	post["day"] = str(req["day"]).encode()
+	post["reputation"] = str(req["reputation"]).encode()
+	post["user_id"] = str(req["user_id"]).encode()
+	post["question_id"] = str(req["question_id"]).encode()
 
 
 	feature_extractor = FeatureAnalysis(req)
