@@ -76,10 +76,10 @@ def save_post():
 	predictor = RModelPredictor(features)
 	tips = tips_handler.get_tips(features)
 
-	post["features"] = str(features)
-	post["prediction_raw"] = (predictor.predict_raw())
-	post["prediction_discretized"] = (predictor.predict_discretized())
-	post["tips"]=str(tips)
+	post["features"] = str(features).encode()
+	post["prediction_raw"] = str(predictor.predict_raw()).encode()
+	post["prediction_discretized"] = str(predictor.predict_discretized()).encode()
+	post["tips"]=str(tips).encode()
 
 	df = pd.DataFrame({"question_id":[post["question_id"]],"title":[post["title"]],"body":[post["body"]],"tags":[post["tags"]],
 						"hour":[post["hour"]], "day":[post["day"]],"reputation":[post["reputation"]],
