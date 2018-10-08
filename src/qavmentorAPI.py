@@ -62,7 +62,7 @@ def save_post():
 	req = request.get_json()
 	
 	for key, value in req.items():
-		post[key] = req[key].encode()
+		post[key] = str(req[key]).encode()
 
 	
 	r = requests.get('https://api.stackexchange.com/2.2/users/'
@@ -75,7 +75,6 @@ def save_post():
 		last_post = posts_from_usr[0]
 		if last_post["post_type"] == "question":
 			post["question_id"] = str(last_post["post_id"]).encode()
-
 
 			feature_extractor = FeatureAnalysis(req)
 			features = feature_extractor.extract_features()
@@ -102,8 +101,7 @@ def save_post():
 				 
 			with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:			
 		  		df.to_csv(f, header=False, index=False)
-
-			return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+						return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 	return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
 
 
