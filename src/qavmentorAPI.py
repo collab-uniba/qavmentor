@@ -96,11 +96,11 @@ def save_post():
 			if not os.path.isfile(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ']):
 				with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
 					header = pd.DataFrame([["question_id","title","body","tags","hour", "day","reputation","user_id","features", 
-								"prediction_raw", "prediction_discretized",	"tips"]])
+								"prediction_raw", "prediction_discretized", "tips"]])
 					header.to_csv(f, header=False, index=False)
 				 
-			with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:			
-		  		df.to_csv(f, header=False, index=False)
+			with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:          
+				df.to_csv(f, header=False, index=False)
 						return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 	return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
 
