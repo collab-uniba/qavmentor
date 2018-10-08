@@ -68,6 +68,7 @@ def save_post():
 	post["day"] = str(req["day"])
 	post["reputation"] = str(req["reputation"])
 	post["user_id"] = str(req["user_id"])
+	post["question_id"] = str(req["question_id"])
 
 
 	feature_extractor = FeatureAnalysis(req)
