@@ -61,43 +61,50 @@ def save_post():
 	post = {}
 	req = request.get_json()
 	
-	post["title"] = req["title"].encode()
-	post["body"] = req["body"].encode()
-	post["tags"] = str(req["tags"]).encode()
-	post["hour"] = str(req["hour"]).encode()
-	post["day"] = str(req["day"]).encode()
-	post["reputation"] = str(req["reputation"]).encode()
-	post["user_id"] = str(req["user_id"]).encode()
-	post["question_id"] = str(req["question_id"]).encode()
+	for key, value in req.items():
+		post[key] = req[key].encode()
 
-
-	feature_extractor = FeatureAnalysis(req)
-	features = feature_extractor.extract_features()
-	predictor = RModelPredictor(features)
-	tips = tips_handler.get_tips(features)
-
-	post["features"] = str(features).encode()
-	post["prediction_raw"] = str(predictor.predict_raw()).encode()
-	post["prediction_discretized"] = str(predictor.predict_discretized()).encode()
-	post["tips"]=str(tips).encode()
-
-	df = pd.DataFrame({"question_id":[post["question_id"]],"title":[post["title"]],"body":[post["body"]],"tags":[post["tags"]],
-						"hour":[post["hour"]], "day":[post["day"]],"reputation":[post["reputation"]],
-						"user_id":[post["user_id"]],"features":[post["features"]], 
-						"prediction_raw":[post["prediction_raw"]], 
-						"prediction_discretized":[post["prediction_discretized"]],
-						"tips":[post["tips"]]})
 	
-	if not os.path.isfile(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ']):
-		with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
-			header = pd.DataFrame([["question_id","title","body","tags","hour", "day","reputation","user_id","features", 
-						"prediction_raw", "prediction_discretized",	"tips"]])
-			header.to_csv(f, header=False, index=False)
-		 
-	with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:			
-  		df.to_csv(f, header=False, index=False)
+	r = requests.get('https://api.stackexchange.com/2.2/users/'
+						+str(req["user_id"])+'/posts?order=desc&sort=creation&site=stackoverflow')
+	
+	post_obj = r.json()
+	posts_from_usr = post_obj["items"]
+	
+	if len(posts_from_usr) > 0:
+		last_post = posts_from_usr[0]
+		if last_post["post_type"] == "question":
+			post["question_id"] = str(last_post["post_id"]).encode()
 
-	return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
+			feature_extractor = FeatureAnalysis(req)
+			features = feature_extractor.extract_features()
+			predictor = RModelPredictor(features)
+			tips = tips_handler.get_tips(features)
+
+			post["features"] = str(features).encode()
+			post["prediction_raw"] = str(predictor.predict_raw()).encode()
+			post["prediction_discretized"] = str(predictor.predict_discretized()).encode()
+			post["tips"]=str(tips).encode()
+
+			df = pd.DataFrame({"question_id":[post["question_id"]],"title":[post["title"]],"body":[post["body"]],"tags":[post["tags"]],
+								"hour":[post["hour"]], "day":[post["day"]],"reputation":[post["reputation"]],
+								"user_id":[post["user_id"]],"features":[post["features"]], 
+								"prediction_raw":[post["prediction_raw"]], 
+								"prediction_discretized":[post["prediction_discretized"]],
+								"tips":[post["tips"]]})
+			
+			if not os.path.isfile(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ']):
+				with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:
+					header = pd.DataFrame([["question_id","title","body","tags","hour", "day","reputation","user_id","features", 
+								"prediction_raw", "prediction_discretized",	"tips"]])
+					header.to_csv(f, header=False, index=False)
+				 
+			with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:			
+		  		df.to_csv(f, header=False, index=False)
+
+			return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+	return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
 
 
 
