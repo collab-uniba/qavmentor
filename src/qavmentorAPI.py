@@ -101,7 +101,7 @@ def save_post():
 				 
 			with open(os.path.dirname(os.path.abspath(__file__))+'/'+config['postedQ'], 'a') as f:          
 				df.to_csv(f, header=False, index=False)
-						return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+				return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 	return json.dumps({'success':False}), 400, {'ContentType':'application/json'}
 
 
