@@ -14,7 +14,7 @@ coverage==4.5.1
 cryptography==2.3.1
 cssselect==1.0.3
 Flask==1.0.2
-Flask-Cors==3.0.4
+Flask-Cors==3.0.9
 hyperlink==18.0.0
 idna==2.6
 incremental==17.5.0
