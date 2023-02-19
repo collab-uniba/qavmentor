@@ -43,8 +43,9 @@ requests==2.20.0
 Scrapy==1.8.1
 service-identity==17.0.0
 six==1.11.0
-Twisted==18.4.0
+Twisted==22.10.0rc1
 urllib3==1.26.5
 w3lib==1.19.0
 Werkzeug==0.15.3
 zope.interface==4.5.0
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
