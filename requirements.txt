@@ -11,7 +11,7 @@ click==6.7
 codecov==2.0.17
 constantly==15.1.0
 coverage==4.5.1
-cryptography==3.3.2
+cryptography==41.0.5
 cssselect==1.0.3
 Flask==1.0.2
 Flask-Cors==3.0.9
@@ -43,8 +43,8 @@ requests==2.20.0
 Scrapy==1.8.1
 service-identity==17.0.0
 six==1.11.0
-Twisted==18.4.0
+Twisted==23.10.0rc1
 urllib3==1.26.5
 w3lib==1.19.0
-Werkzeug==0.15.3
+Werkzeug==3.0.1
 zope.interface==4.5.0
